@@ -53,9 +53,10 @@
 @include tablet {
   .header {
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    padding: 2rem;
-   
+    padding: 0 2rem;
+    height:186px;
     &__logo {
       width: 128.59px;
       height: 28px;
@@ -75,6 +76,6 @@
 }
 @include desktop{
   .header{
-      padding:4rem;
+      padding:0 8rem;
   }
 }
