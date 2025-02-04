@@ -2,7 +2,7 @@
 
 //768px to 1279px
 @mixin tablet {
-  @media (min-width: $tablet-breakpoint){
+  @media (min-width: $tablet-breakpoint) {
     @content;
   }
 }
