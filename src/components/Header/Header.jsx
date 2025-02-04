@@ -1,4 +1,4 @@
-import './Header.scss'
+import './Header.scss';
 import logo from '../../assets/Logo/InStock-Logo.svg'
 const Header=(props)=>{
     return(
