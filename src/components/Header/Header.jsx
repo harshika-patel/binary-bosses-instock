@@ -8,8 +8,8 @@ const Header=(props)=>{
                
             </div>
             <div className='header__nav'>
-            <button className='header__btn'> <h3 className='header__nav-warehouse'>Warehouses</h3></button> 
-              <button  className='header__btn'><h3 className='header__nav-warehouse'>Inventory</h3></button> 
+            <button className='header__btn'> <h3 className='header__nav-title'>Warehouses</h3></button> 
+              <button  className='header__btn'><h3 className='header__nav-title'>Inventory</h3></button> 
             </div>
         </header>
     )
