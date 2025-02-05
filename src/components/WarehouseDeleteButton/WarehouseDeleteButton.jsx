@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import "./WarehouseDelete.scss";
+import "./WarehouseDeleteButton.scss";
 
-const WarehouseDelete = ({ onClick }) => {
+const WarehouseDeleteButton = ({ onClick }) => {
     return (
         <button className="delete-button" onClick={onClick}>Delete Icon</button>
     );
 };
-export default WarehouseDelete;
+export default WarehouseDeleteButton;
 
 
 

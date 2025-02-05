@@ -1,5 +1,5 @@
 import { useState } from "react";
-import WarehouseDelete from "../WarehouseDelete/WarehouseDelete";
+import WarehouseDeleteButton from "../WarehouseDeleteButton/WarehouseDeleteButton";
 import WarehouseConfirmationModal from "../WarehouseConfirmationModal/WarehouseConfirmationModal";
 import "./WarehouseList.scss";
 
@@ -33,7 +33,7 @@ const WarehouseList = ({ warehouses, handleDeleteWarehouse }) => {
                 <div key={warehouse.id} className="warehouse-item">
                     <h2>{warehouse.name}</h2>
                     <p>Location: {warehouse.location}</p>
-                    <WarehouseDelete onClick={() => openDeleteModal(warehouse)} />
+                    <WarehouseDeleteButton onClick={() => openDeleteModal(warehouse)} />
                 </div>
                 ))
         )}
