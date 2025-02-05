@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import editWhiteFill from "../../assets/Icons/edit-white-24px.svg";
+import axios from "axios";
 
 const WarehouseDetails = () => {
     const { warehouseId } = useParams();
@@ -13,8 +14,8 @@ const WarehouseDetails = () => {
     useEffect(() => {
         const fetchWarehouse = async () => {
           try {
-            const { data } = await fetch(`${baseUrl}/warehouses/${id}`);
-            setWarehouse(data);
+            const warehouseResponse = await axios.get(`${baseUrl}/warehouses/${warehouseId}`);
+            setWarehouse(warehouseResponse.data);
             } catch (error) {
                 console.error(error);
             }
@@ -23,13 +24,15 @@ const WarehouseDetails = () => {
         fetchWarehouse();
     }, [warehouseId]);
 
+    if (!warehouse) return <p>Loading...</p>
+
 
 
     return (
     <section>
         <div>
             <img src={arrowBack} alt="back" />
-            <h2>{warehouse_name}</h2>
+            <h2>{warehouse.warehouse_name}</h2>
             <img src={editWhiteFill} alt="edit" />
         </div>
 
@@ -37,17 +40,17 @@ const WarehouseDetails = () => {
         <div>
             <div>
                 <p>WAREHOUSE ADDRESS:</p>
-                <p>{address}</p>
+                <p>{warehouse.address}</p>
             </div>
             <div>
                 <p>CONTANCT NAME:</p>
-                <p>{contact_name}</p>
-                <p>{contanct_position}</p>
+                <p>{warehouse.contact_name}</p>
+                <p>{warehouse.contact_position}</p>
             </div>
             <div>
                 <p>CONTACT INFORMATION</p>
-                <p>{contanct_phone}</p>
-                <p>{contanct_email}</p>
+                <p>{warehouse.contact_phone}</p>
+                <p>{warehouse.contact_email}</p>
             </div>
         </div>
 
