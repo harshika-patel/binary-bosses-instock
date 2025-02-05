@@ -7,7 +7,7 @@ import axios from "axios";
 
 const WarehouseDetails = () => {
     const { warehouseId } = useParams();
-    const [warehouse, setWarehouse] = useState(null);
+    const [warehouse, setWarehouse] = useState([]);
 
     const baseUrl = import.meta.env.VITE_APP_URL;
 
@@ -30,13 +30,15 @@ const WarehouseDetails = () => {
         <section>
             <div className="title-wrapper">
                 <div className="title-wrapper__left">
-                    <img src={arrowBack} alt="back" />
-                    <h2>{warehouse.warehouse_name}</h2>
+                    <img className="title-wrapper__arrow" src={arrowBack} alt="back" />
+                    <h2 className="title-wrapper__h2">{warehouse.warehouse_name}</h2>
                 </div>
-                <img className="title-wrapper__right" src={editWhiteFill} alt="edit" />
+                <div className="title-wrapper__right">
+                    <img src={editWhiteFill} alt="edit" />                  
+                </div>
             </div>
 
-            <hr></hr>
+            <hr className="divider"></hr>
             <div className="details">
                 <div>
                     <p className="details__labels">WAREHOUSE ADDRESS:</p>
@@ -49,9 +51,9 @@ const WarehouseDetails = () => {
                         <p className="details__outputs">{warehouse.contact_position}</p>
                     </div>
                     <div>
-                        <p>CONTACT INFORMATION:</p>
-                        <p className="details__labels">{warehouse.contact_phone}</p>
-                        <p className="details__outputs">Phone</p>
+                        <p className="details__labels">CONTACT INFORMATION:</p>
+                        <p className="details__outputs">{warehouse.contact_phone}</p>
+                        <p >Phone</p>
                         <p className="details__outputs">{warehouse.contact_email}</p>
                     </div>
                 </div>
