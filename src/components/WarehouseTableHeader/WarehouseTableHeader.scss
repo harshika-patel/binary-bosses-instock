@@ -1,0 +1,76 @@
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/globals" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
+
+.warehouse-table-header {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $Light-Grey;
+    padding: 0.5rem 2rem;
+  }
+
+  @include desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $Light-Grey;
+    padding: 0.5rem 2rem;
+  }
+
+  &__column {
+    @include tablet {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    @include desktop {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    h3 {
+      @include tablet {
+        color: $Slate;
+        display: flex;
+        align-items: center;
+      }
+
+      @include desktop {
+        color: $Slate;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    &--actions {
+      @include tablet {
+        justify-content: flex-end;
+        flex: 0.5;
+      }
+
+      @include desktop {
+        justify-content: flex-end;
+        flex: 0.5;
+      }
+    }
+  }
+
+  &__icon {
+    @include tablet {
+      cursor: pointer;
+    }
+
+    @include desktop {
+      cursor: pointer;
+    }
+  }
+}
