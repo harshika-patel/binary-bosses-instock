@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import { useState } from "react";
+import "./App.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
@@ -12,13 +13,23 @@ import InventoryEditItemPage from "./pages/InventoryEditItemPage/InventoryEditIt
 import InventoryAddNewPage from "./pages/InventoryAddNewPage/InventoryAddNewPage";
 
 function App() {
+
+    const [warehouses, setWarehouses] = useState([
+        { id: 1, name: "Warehouse A", location: "New York" },
+        { id: 2, name: "Warehouse B", location: "Los Angeles" },
+        { id: 3, name: "Warehouse C", location: "Chicago" }
+    ]);
+
+    const handleDeleteWarehouse = (id) => {
+        setWarehouses((prevWarehouses) => prevWarehouses.filter(w => w.id !== id));
+    };
     return (
         <>
             <BrowserRouter>
                 <Header />
                 <main>
                     <Routes>
-                        <Route path="/" element={<WarehousesPage />} />
+                        <Route path="/" element={<WarehousesPage warehouses={warehouses} handleDeleteWarehouse={handleDeleteWarehouse} />} />
                         <Route path="/warehouses/:warehouseId" element={<WarehouseDetailsPage />} />
                         <Route path="/warehouses/:warehouseId/edit" element={<WarehouseEditPage />} />
                         <Route path="/warehouses/add" element={<WarehouseAddNewPage />} />

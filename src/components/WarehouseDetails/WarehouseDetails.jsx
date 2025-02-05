@@ -1,5 +1,6 @@
 import "./WarehouseDetails.scss";
 
+
 const WarehouseDetails = () => {
     return <section></section>;
 };

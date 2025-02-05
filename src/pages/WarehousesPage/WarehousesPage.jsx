@@ -1,13 +1,29 @@
 import "./WarehousesPage.scss";
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
+import WarehouseList from "../../components/WarehouseList/WarehouseList";
 
-const WarehousesPage = () => {
+const WarehousesPage = ({ warehouses, handleDeleteWarehouse }) => {
+    // const [warehouses, setWarehouses] = useState([]);
+
+    // useEffect(() => {
+    //     fetchWarehouses();
+    // }, []);
+    // const handleDeleteWarehouse = async (id) => {
+    //     try {
+    //         const response = await fetch(`/api/warehouses/${id}`, { method: "DELETE" });
+    //         if (response.ok) {
+    //             setWarehouses((prevWarehouses) => prevWarehouses.filter((w) => w.id !== id));
+    //         } else {
+    //             console.error("Failed to delete warehouse");
+    //         }
+    //     } catch (error) {
+    //         console.error("Error deleting warehouse:", error);
+    //     }
+    // };
     return (
-        <div>
+        <>
             <p>Warehouse Page</p>
-        </div>
+            <WarehouseList warehouses={warehouses} handleDeleteWarehouse={handleDeleteWarehouse} />
+        </>
     );
 };
 
