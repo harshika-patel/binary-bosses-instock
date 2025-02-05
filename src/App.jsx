@@ -15,9 +15,9 @@ import InventoryAddNewPage from "./pages/InventoryAddNewPage/InventoryAddNewPage
 function App() {
 
     const [warehouses, setWarehouses] = useState([
-        { id: 1, name: "Warehouse A", location: "New York" },
-        { id: 2, name: "Warehouse B", location: "Los Angeles" },
-        { id: 3, name: "Warehouse C", location: "Chicago" }
+        { id: 1, name: "Warehouse A", location: "One" },
+        { id: 2, name: "Warehouse B", location: "Two" },
+        { id: 3, name: "Warehouse C", location: "Three" }
     ]);
 
     const handleDeleteWarehouse = (id) => {

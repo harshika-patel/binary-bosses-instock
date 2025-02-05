@@ -1,9 +1,22 @@
 import ReactModal from "react-modal";
+import axios from "axios";
+import React, { useState } from "react";
 import "./WarehouseConfirmationModal.scss";
 
 ReactModal.setAppElement("#root");
 
-const WarehouseConfirmationModal = ({ isOpen, onClose, warehouse, onConfirm }) => {
+const WarehouseConfirmationModal = ({ isOpen, onClose, warehouse }) => {
+    // const [isOpen, setIsOpen] = useState(false);
+
+    const handleDelete = async () => {
+       try {
+          const response = await axios.delete(`{API_URL}/warehouse/${warehouse.id}`);
+          setWarehouse(response.data);
+       } catch (error) {
+          console.error(error);
+       }
+    };
+    
     return (
         <ReactModal
             isOpen={isOpen}
@@ -21,7 +34,7 @@ const WarehouseConfirmationModal = ({ isOpen, onClose, warehouse, onConfirm }) =
         )}
         <div className="button-group">
             <button className="cancel" onClick={onClose}>Cancel</button>
-            <button className="confirm" onClick={onConfirm}>Delete</button>
+            <button className="confirm" onClick={handleDelete}>Delete</button>
         </div>
         </ReactModal>
     );
