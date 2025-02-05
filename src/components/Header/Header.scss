@@ -42,16 +42,22 @@
     text-decoration: none;
   }
 
-  &__btn:hover,
-  &__btn:focus,
-  &__btn:active {
-    color: $White;
-    text-decoration: underline;
-    background-color: $Instock-Black;
-    transform: scale(1.05);
-  }
+  // &__btn:hover,
+  // &__btn:focus,
+  // &__btn:active {
+  //   color: $White;
+  //   text-decoration: underline;
+  //   background-color: $Instock-Black;
+  //   transform: scale(1.05);
+  // }
+ 
 }
-
+.header__btn.active {
+  color: $White;
+  text-decoration: underline;
+  background-color: $Instock-Black;
+  transform: scale(1.05);
+}
 @include tablet {
   .header {
     flex-direction: row;

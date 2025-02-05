@@ -1,11 +1,18 @@
 import './Header.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink ,useLocation} from 'react-router-dom';
 import logo from '../../assets/Logo/InStock-Logo.svg'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Header=(props)=>{
     const [activeTab, setActiveTab] = useState("warehouse");
-
+    const location = useLocation();
+    useEffect(() => {
+        if (location.pathname === "/") {
+            setActiveTab("warehouse");  // Make warehouse the default active tab
+        } else if (location.pathname === "/inventory") {
+            setActiveTab("inventory");
+        }
+    }, [location]);
     return(
         <header className='header'>
             <div className='header__logo'>
