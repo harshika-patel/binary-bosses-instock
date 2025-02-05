@@ -1,0 +1,26 @@
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/globals" as *;
+@use "../../styles/_partials/variables" as *;
+@use "../../styles/_partials/mixins" as *; 
+
+
+footer {
+   
+text-align: center;
+justify-content: center;
+background-color: $Light-Grey;
+color: $Slate;
+position: absolute;
+z-index: 0;
+width: 100%;
+margin-top: -3.2rem;
+padding:100vh 0 2rem;
+font-size: 0.6875rem;
+line-height: 1rem;
+
+@include tablet {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    padding-bottom: 1rem;
+}
+}
