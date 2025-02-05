@@ -1,6 +1,13 @@
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/globals" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
 
+.warehouse {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-.warehouse__page {
+/* .warehouse__page {
     position: relative;
     z-index: 5;
-}
+} */
