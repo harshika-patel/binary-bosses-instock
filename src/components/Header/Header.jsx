@@ -7,9 +7,9 @@ const Header=(props)=>{
     const [activeTab, setActiveTab] = useState("warehouse");
     const location = useLocation();
     useEffect(() => {
-        if (location.pathname === "/") {
+        if (location.pathname === "/"|| location.pathname.startsWith("/warehouse")) {
             setActiveTab("warehouse");  // Make warehouse the default active tab
-        } else if (location.pathname === "/inventory") {
+        } else if (location.pathname.startsWith("/inventory")) {
             setActiveTab("inventory");
         }
     }, [location]);
