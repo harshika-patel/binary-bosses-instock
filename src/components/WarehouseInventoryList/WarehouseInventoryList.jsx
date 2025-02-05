@@ -12,24 +12,19 @@ const WarehouseInventoryList = () => {
   const { id } = useParams();
   const [warehouse, setWarehouse] = useState(null);
   const [inventory, setInventory] = useState([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const warehouseResponse = await axios.get(
-          "http://localhost:8080/warehouses"
-        );
+        const warehouseResponse = await axios.get("http://localhost:8080/warehouses");
         setWarehouse(warehouseResponse.data);
-
-        const inventoryResponse = await axios.get(
-          `http://localhost:8080/warehouses/${id}/inventories`
-        );
+        
+        const inventoryResponse = await axios.get(`http://localhost:8080/warehouses/${id}/inventories`);
         setInventory(inventoryResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, [id]);
 
@@ -41,6 +36,8 @@ const WarehouseInventoryList = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize); // Cleanup listener
   }, []);
+    fetchData();
+  }, [id]);
 
   if (!warehouse) return <p>Loading...</p>;
 
