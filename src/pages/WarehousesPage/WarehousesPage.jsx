@@ -6,7 +6,7 @@ import "./WarehousesPage.scss";
 const WarehousesPage = () => {
     return (
         <div>
-            <p>Warehouse Page</p>
+            <p className="warehouse__page">Warehouse Page</p>
         </div>
     );
 };
