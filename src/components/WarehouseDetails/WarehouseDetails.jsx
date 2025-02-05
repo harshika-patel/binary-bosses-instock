@@ -9,7 +9,7 @@ const WarehouseDetails = () => {
     const { warehouseId } = useParams();
     const [warehouse, setWarehouse] = useState([]);
 
-    const baseUrl = import.meta.env.VITE_APP_URL;
+    const baseUrl = import.meta.env.API_URL;
 
     useEffect(() => {
         const fetchWarehouse = async () => {
@@ -53,7 +53,6 @@ const WarehouseDetails = () => {
                     <div>
                         <p className="details__labels">CONTACT INFORMATION:</p>
                         <p className="details__outputs">{warehouse.contact_phone}</p>
-                        <p >Phone</p>
                         <p className="details__outputs">{warehouse.contact_email}</p>
                     </div>
                 </div>
