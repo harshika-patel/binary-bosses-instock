@@ -3,7 +3,7 @@ import axios from "axios";
 import edit from "../../assets/Icons/edit-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import right from "../../assets/Icons/chevron_right-24px.svg";
-import dropdown from "../../assets/Icons/arrow_drop_down-24px.svg";
+import dropdown from "../../assets/Icons/sort-24px.svg";
 import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
@@ -22,7 +22,7 @@ const WarehouseInventoryList = () => {
         setWarehouse(warehouseResponse.data);
 
         const inventoryResponse = await axios.get(
-          `http://localhost:8080/warehouses/1/inventories`
+          `http://localhost:8080/warehouses/${id}/inventories`
         );
         setInventory(inventoryResponse.data);
       } catch (error) {
@@ -120,7 +120,7 @@ const WarehouseInventoryList = () => {
                 Quantity <img src={dropdown} alt="dropdown" /> 
               </th>
               <th className="warehouse-inventory-table__header-title">
-                Actions <img src={dropdown} alt="dropdown" />
+                Actions
               </th>
             </tr>
           </thead>
