@@ -43,8 +43,8 @@
   }
 
   &__btn:hover,
-  &__btn:focus,
-  &__btn:active {
+  &__btn:focus
+   {
     color: $White;
     text-decoration: underline;
     background-color: $Instock-Black;
