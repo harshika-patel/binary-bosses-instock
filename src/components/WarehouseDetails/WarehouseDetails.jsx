@@ -1,6 +1,6 @@
 import "./WarehouseDetails.scss";
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import editWhiteFill from "../../assets/Icons/edit-white-24px.svg";
 import axios from "axios";
@@ -30,7 +30,9 @@ const WarehouseDetails = () => {
         <section>
             <div className="title-wrapper">
                 <div className="title-wrapper__left">
-                    <img className="title-wrapper__arrow" src={arrowBack} alt="back" />
+                    <Link to="/">
+                        <img className="title-wrapper__arrow" src={arrowBack} alt="back" />
+                    </Link>
                     <h2 className="title-wrapper__h2">{warehouse.warehouse_name}</h2>
                 </div>
                 <div className="title-wrapper__right">
