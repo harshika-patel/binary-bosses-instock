@@ -1,9 +1,11 @@
 import "./WarehouseCard.scss";
+import { Link } from "react-router-dom";
 import chevron_right from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 
 const WarehouseCard = ({
+  warehouse_id,
   warehouse_name,
   address,
   city,
@@ -19,7 +21,12 @@ const WarehouseCard = ({
           <div className="warehouse-card__details">
             <h3 className="warehouse-card__label">WAREHOUSE</h3>
             <div className="warehouse-card__name">
-              <p className="warehouse-card__name-text">{warehouse_name}</p>
+              <Link
+                to={`/warehouses/${warehouse_id}`}
+                className="warehouse-card__name-text"
+              >
+                {warehouse_name}
+              </Link>
               <img
                 className="warehouse-card__icon"
                 src={chevron_right}

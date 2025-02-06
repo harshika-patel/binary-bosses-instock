@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import WarehouseCard from "../WarehouseCard/WarehouseCard";
 import "./WarehouseList.scss";
@@ -27,6 +26,7 @@ function WarehouseList() {
       {warehouses.map((warehouse) => (
         <WarehouseCard
           key={warehouse.id}
+          warehouse_id={warehouse.id}
           warehouse_name={warehouse.warehouse_name}
           address={warehouse.address}
           city={warehouse.city}
