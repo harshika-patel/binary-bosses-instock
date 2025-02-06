@@ -3,7 +3,7 @@ import axios from "axios";
 import edit from "../../assets/Icons/edit-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import right from "../../assets/Icons/chevron_right-24px.svg";
-import dropdown from "../../assets/Icons/arrow_drop_down-24px.svg";
+import dropdown from "../../assets/Icons/sort-24px.svg";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -11,24 +11,19 @@ const WarehouseInventoryList = () => {
   const { id } = useParams();
   const [warehouse, setWarehouse] = useState(null);
   const [inventory, setInventory] = useState([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const warehouseResponse = await axios.get(
-          "http://localhost:8080/warehouses"
-        );
+        const warehouseResponse = await axios.get("http://localhost:8080/warehouses");
         setWarehouse(warehouseResponse.data);
-
-        const inventoryResponse = await axios.get(
-          `http://localhost:8080/warehouses/1/inventories`
-        );
+        
+        const inventoryResponse = await axios.get(`http://localhost:8080/warehouses/${id}/inventories`);
         setInventory(inventoryResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, [id]);
 
@@ -40,6 +35,8 @@ const WarehouseInventoryList = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize); // Cleanup listener
   }, []);
+    fetchData();
+  }, [id]);
 
   if (!warehouse) return <p>Loading...</p>;
 
@@ -109,49 +106,33 @@ const WarehouseInventoryList = () => {
         ))
       ) : (
         <div class name="warehouse-inventory-table-container">
-          <table className="warehouse-inventory-table">
-            <thead>
-              <tr className="warehouse-inventory-table__header">
-                <th className="warehouse-inventory-table__header-title">
-                  Inventory Item <img src={dropdown} alt="dropdown" />
-                </th>
-                <th className="warehouse-inventory-table__header-title">
-                  Category <img src={dropdown} alt="dropdown" />
-                </th>
-                <th className="warehouse-inventory-table__header-title">
-                  Status <img src={dropdown} alt="dropdown" />
-                </th>
-                <th className="warehouse-inventory-table__header-title">
-                  Quantity <img src={dropdown} alt="dropdown" />
-                </th>
-                <th className="warehouse-inventory-table__header-title">
-                  Actions <img src={dropdown} alt="dropdown" />
-                </th>
-              </tr>
-            </thead>
-            <tbody className="warehouse-inventory-table__body">
-              {inventory.map((item) => (
-                <tr key={item.id} className="warehouse-inventory-table__row">
-                  <td className="warehouse-inventory-table__row-data">
-                    <a
-                      className="warehouse-inventory-table__row-data__link"
-                      href={`/inventory/${item.id}`}
-                    >
-                      {item.item_name}
-                      <img
-                        className="warehouse-inventory-table__row-data__icon"
-                        src={right}
-                        alt="get more details arrow"
-                      ></img>
-                    </a>
-                  </td>
-                  <td className="warehouse-inventory-table__row-data">
-                    {item.category}
-                  </td>
-                  <td
-                    className={
-                      item.status == "In Stock" ? "in-stock" : "out-of-stock"
-                    }
+        <table className="warehouse-inventory-table">
+          <thead>
+            <tr className="warehouse-inventory-table__header">
+              <th className="warehouse-inventory-table__header-title">
+                Inventory Item <img src={dropdown} alt="dropdown" />
+              </th>
+              <th className="warehouse-inventory-table__header-title">
+                Category <img src={dropdown} alt="dropdown" />
+              </th>
+              <th className="warehouse-inventory-table__header-title">
+                Status <img src={dropdown} alt="dropdown" />
+              </th>
+              <th className="warehouse-inventory-table__header-title">
+                Quantity <img src={dropdown} alt="dropdown" /> 
+              </th>
+              <th className="warehouse-inventory-table__header-title">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody className="warehouse-inventory-table__body">
+            {inventory.map((item) => (
+              <tr key={item.id} className="warehouse-inventory-table__row">
+                <td className="warehouse-inventory-table__row-data">
+                  <a
+                    className="warehouse-inventory-table__row-data__link"
+                    href={`/inventory/${item.id}`}
                   >
                     {item.status}
                   </td>
