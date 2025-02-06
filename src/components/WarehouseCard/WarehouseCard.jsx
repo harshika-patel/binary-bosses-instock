@@ -70,6 +70,7 @@ const WarehouseCard = ({
             <p className="warehouse-card__text">{contact_name}</p>
             <p className="warehouse-card__contact-text">{contact_phone}</p>
             <p className="warehouse-card__contact-text">{contact_email}</p>
+          </div>
         </div>
         <div className="warehouse-card__actions">
             <button className="warehouse-card__button" onClick={openDeleteModal}>
@@ -83,6 +84,7 @@ const WarehouseCard = ({
         {isModalOpen &&  selectedWarehouse && (
             <WarehouseDeleteModal isOpen={isModalOpen} onClose={closeDeleteModal} onConfirm={handleDelete}  warehouseName={selectedWarehouse.warehouse_name}
             />)}
+      </div>
     </article>
     );
 };
