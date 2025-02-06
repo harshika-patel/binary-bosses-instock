@@ -1,0 +1,179 @@
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/globals" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
+
+.inventory-card {
+  padding: 1.5rem;
+  background-color: $White;
+  border-top: 1px solid $Cloud;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  &:hover {
+    background-color: rgba(238, 242, 255, 0.6);
+  }
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+      flex-grow: 1;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @include desktop {
+      flex-direction: row;
+      flex-grow: 1;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      flex: 1; // Ensures sections take equal width
+    }
+
+    @include desktop {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    @include desktop {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__label {
+    color: $Slate;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    @include tablet {
+      display: none;
+    }
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__name-text {
+    color: $Instock-Indigo;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+  }
+
+  &__text {
+    color: $Instock-Black;
+    font-size: 0.9375rem;
+    line-height: 1.625rem;
+    text-align: left;
+    width: 100%;
+
+    @include tablet {
+      max-width: 15rem;
+    }
+
+    @include desktop {
+      max-width: 15rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    @include tablet {
+      justify-content: flex-end;
+      gap: 0.75rem;
+      width: auto;
+    }
+
+    @include desktop {
+      justify-content: flex-end;
+      gap: 0.75rem;
+      width: auto;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  &__button {
+    all: unset; 
+  }
+}
+
