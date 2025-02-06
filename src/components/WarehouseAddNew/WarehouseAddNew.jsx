@@ -128,56 +128,61 @@ const WarehouseAddNew = () => {
       </div>
       <hr />
       <form onSubmit={handleSubmit}>
-        {/* Warehouse Details */}
+        <div className="form-section">
         <div className="section">
-          <h2>Warehouse Details</h2>
-          <label><h3>Warehouse Name</h3></label>
-          <input
-            type="text"
-            name="warehouseName"
-            value={formData.warehouseName}
-            onChange={handleChange}
-            placeholder="Warehouse Name"
-            className={errors.warehouseName ? "error" : ""}
-          />
-          {errors.warehouseName && <span className="error-message">{errors.warehouseName}</span>}
-
-          <label><h3>Street Address</h3></label>
-          <input
-            type="text"
-            name="streetAddress"
-            value={formData.streetAddress}
-            onChange={handleChange}
-            placeholder="Street Address"
-            className={errors.streetAddress ? "error" : ""}
-          />
-          {errors.streetAddress && <span className="error-message">{errors.streetAddress}</span>}
-
-          <label><h3>City</h3></label>
-          <input
-            type="text"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            placeholder="City"
-            className={errors.city ? "error" : ""}
-          />
-          {errors.city && <span className="error-message">{errors.city}</span>}
-
-          <label><h3>Country</h3></label>
-          <input
-            type="text"
-            name="country"
-            value={formData.country}
-            onChange={handleChange}
-            placeholder="Country"
-            className={errors.country ? "error" : ""}
-          />
-          {errors.country && <span className="error-message">{errors.country}</span>}
+            <h2>Warehouse Details</h2>
+            <label><h3>Warehouse Name</h3></label>
+            <input
+                type="text"
+                name="warehouseName"
+                value={formData.warehouseName}
+                onChange={handleChange}
+                placeholder="Warehouse Name"
+                className={errors.warehouseName ? "error" : ""}
+            />
+            <div>
+            {errors.warehouseName && <span className="error-message">{errors.warehouseName}</span>}
+            </div>
+            <label><h3>Street Address</h3></label>
+            <input
+                type="text"
+                name="streetAddress"
+                value={formData.streetAddress}
+                onChange={handleChange}
+                placeholder="Street Address"
+                className={errors.streetAddress ? "error" : ""}
+            />
+            <div>
+            {errors.streetAddress && <span className="error-message">{errors.streetAddress}</span>}
+            </div>
+            <label><h3>City</h3></label>
+            <input
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                placeholder="City"
+                className={errors.city ? "error" : ""}
+            />
+            <div>
+            {errors.city && <span className="error-message">{errors.city}</span>}
+            </div>
+            <label><h3>Country</h3></label>
+            <input
+                type="text"
+                name="country"
+                value={formData.country}
+                onChange={handleChange}
+                placeholder="Country"
+                className={errors.country ? "error" : ""}
+            />
+            <div>
+            {errors.country && <span className="error-message">{errors.country}</span>}
+            </div>
         </div>
 
-        <hr />
-        {/* Contact Details */}
+            <hr />
+            {/* Contact Details */}
         <div className="section">
           <h2>Contact Details</h2>
           <label><h3>Contact Name</h3></label>
@@ -189,8 +194,9 @@ const WarehouseAddNew = () => {
             placeholder="Contact Name"
             className={errors.contactName ? "error" : ""}
           />
+          <div>
           {errors.contactName && <span className="error-message">{errors.contactName}</span>}
-
+          </div>
           <label><h3>Position</h3></label>
           <input
             type="text"
@@ -200,8 +206,9 @@ const WarehouseAddNew = () => {
             placeholder="Position"
             className={errors.position ? "error" : ""}
           />
+          <div>
           {errors.position && <span className="error-message">{errors.position}</span>}
-
+          </div>
           <label><h3>Phone Number</h3></label>
           <input
             type="tel"
@@ -211,8 +218,9 @@ const WarehouseAddNew = () => {
             placeholder="Phone Number"
             className={errors.phoneNumber ? "error" : ""}
           />
+          <div>
           {errors.phoneNumber && <span className="error-message">{errors.phoneNumber}</span>}
-
+          </div>
           <label><h3>Email</h3></label>
           <input
             type="email"
@@ -222,12 +230,14 @@ const WarehouseAddNew = () => {
             placeholder="Email"
             className={errors.email ? "error" : ""}
           />
+          <div>
           {errors.email && <span className="error-message">{errors.email}</span>}
+          </div>
         </div>
-
+        </div>
         <div className="buttons">
         <Link to="/warehouse-details"><button type="button" className="cancel" onClick={handleCancel}>Cancel</button></Link>
-        <Link to="/warehouse-details"><button type="submit" className="add-warehouse">+ Add Warehouse</button></Link> 
+      <button type="submit" className="add-warehouse">+ Add Warehouse</button>
         </div>
       </form>
     </div>
