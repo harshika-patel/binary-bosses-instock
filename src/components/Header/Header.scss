@@ -9,11 +9,12 @@
   justify-content: center;
   padding: 1rem;
   background-color: $Graphite;
-
+   height:12rem;
   &__logo {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-top: 1rem;
   }
 
   &__nav {
