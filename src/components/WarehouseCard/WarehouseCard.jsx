@@ -97,7 +97,13 @@ const WarehouseCard = ({
             alt="delete-icon"
           />
         </button>
-        <img className="warehouse-card__icon" src={editIcon} alt="edit-icon" />
+        <Link to={`/warehouses/${warehouse_id}/edit`}>
+          <img
+            className="warehouse-card__icon"
+            src={editIcon}
+            alt="edit-icon"
+          />
+        </Link>
       </div>
       {isModalOpen && selectedWarehouse && (
         <WarehouseDeleteModal
