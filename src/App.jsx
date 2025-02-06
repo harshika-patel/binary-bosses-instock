@@ -12,6 +12,7 @@ import InventoryEditItemPage from "./pages/InventoryEditItemPage/InventoryEditIt
 import InventoryAddNewPage from "./pages/InventoryAddNewPage/InventoryAddNewPage";
 
 function App() {
+
   return (
     <>
       <BrowserRouter>
