@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import WarehouseCard from "../../components/WarehouseCard/WarehouseCard";
 import "./WarehouseList.scss";
@@ -22,23 +21,25 @@ const WarehouseList = () => {
     fetchWarehouses();
     }, []);
 
-        return (
-            <section className="warehouse-list">
-                {warehouses.map((warehouse) => (
-                    <WarehouseCard
-                        key={warehouse.id}
-                        warehouse_name={warehouse.warehouse_name}
-                        address={warehouse.address}
-                        city={warehouse.city}
-                        country={warehouse.country}
-                        contact_name={warehouse.contact_name}
-                        contact_phone={warehouse.contact_phone}
-                        contact_email={warehouse.contact_email}
-                        refreshList={fetchWarehouses}
-                        />
-                ))}
-            </section>
-    );
-};
+  return (
+    <section className="warehouse-list">
+      {warehouses.map((warehouse) => (
+        <WarehouseCard
+          key={warehouse.id}
+          warehouse_id={warehouse.id}
+          warehouse_name={warehouse.warehouse_name}
+          address={warehouse.address}
+          city={warehouse.city}
+          country={warehouse.country}
+          contact_name={warehouse.contact_name}
+          contact_phone={warehouse.contact_phone}
+          contact_email={warehouse.contact_email}
+          refreshList={fetchWarehouses}
+        />
+      ))}
+    </section>
+  );
+}
+
 
 export default WarehouseList;
