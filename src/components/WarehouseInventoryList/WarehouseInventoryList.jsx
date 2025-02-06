@@ -11,6 +11,7 @@ const WarehouseInventoryList = () => {
   const { id } = useParams();
   const [warehouse, setWarehouse] = useState(null);
   const [inventory, setInventory] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,8 +36,7 @@ const WarehouseInventoryList = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize); // Cleanup listener
   }, []);
-    fetchData();
-  }, [id]);
+    
 
   if (!warehouse) return <p>Loading...</p>;
 
@@ -133,6 +133,22 @@ const WarehouseInventoryList = () => {
                   <a
                     className="warehouse-inventory-table__row-data__link"
                     href={`/inventory/${item.id}`}
+                  >
+                    {item.item_name}
+                      <img
+                        className="warehouse-inventory-table__row-data__icon"
+                        src={right}
+                        alt="get more details arrow"
+                      ></img>
+                    </a>
+                  </td>
+                  <td className="warehouse-inventory-table__row-data">
+                    {item.category}
+                  </td>
+                  <td
+                    className={
+                      item.status == "In Stock" ? "in-stock" : "out-of-stock"
+                    }
                   >
                     {item.status}
                   </td>
