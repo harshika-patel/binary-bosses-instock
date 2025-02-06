@@ -6,6 +6,7 @@ import WarehouseDeleteModal from "../WarehouseDeleteModal/WarehouseDeleteModal";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const WarehouseCard = ({
+    id,
     warehouse_name,
     address,
     city,
@@ -13,22 +14,29 @@ const WarehouseCard = ({
     contact_name,
     contact_phone,
     contact_email,
+    refreshList,
 }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
     const openDeleteModal = () => {
         setIsModalOpen(true);
+        setSelectedWarehouse({ id,  name: warehouse_name });
     };
 
     const closeDeleteModal = () => {
         setIsModalOpen(false);
+        setSelectedWarehouse(null);
     };
 
     const handleDelete = async () => {
+        if (!selectedWarehouse) return;
+
         try {
-            const response = await axios.delete(`${API_URL}/warehouses/{id}`);
-            console.log("Warehouse deleted successfully", response.data);
+            await axios.delete(`${API_URL}/warehouses/${selectedWarehouse.id}`);
+            console.log(`Warehouse ${selectedWarehouse.name} deleted successfully"`);
             closeDeleteModal();
+            refreshList();
         } catch (error) {
             console.error("Error deleting warehouse", error);
         }
@@ -53,7 +61,9 @@ const WarehouseCard = ({
                 />
             </button>
         </div>
-        {isModalOpen && <WarehouseDeleteModal isOpen={isModalOpen} onClose={closeDeleteModal} onConfirm={handleDelete} />}
+        {isModalOpen &&  selectedWarehouse && (
+            <WarehouseDeleteModal isOpen={isModalOpen} onClose={closeDeleteModal} onConfirm={handleDelete}  warehouseName={selectedWarehouse.name}
+            />)}
     </article>
     );
 };

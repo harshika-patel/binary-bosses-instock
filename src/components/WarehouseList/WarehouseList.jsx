@@ -9,18 +9,18 @@ const API_URL = import.meta.env.VITE_API_URL;
 const WarehouseList = () => {
     const [warehouses, setWarehouses] = useState([]);
 
+
+    const fetchWarehouses = async () => {
+        try {
+            const response = await axios.get(`${API_URL}/warehouses`);
+            setWarehouses(response.data);
+        } catch (err) {
+            console.error("Error fetching warehoue:", err);
+        }
+    };
     useEffect(() => {
-        const fetchWarehouses = async () => {
-            try {
-                const response = await axios.get(`${API_URL}/warehouses`);
-                setWarehouses(response.data);
-            } catch (err) {
-                console.error("Error fetching warehoue:", err);
-            }
-        };
-    
-        fetchWarehouses();
-        }, []);
+    fetchWarehouses();
+    }, []);
 
         return (
             <section className="warehouse-list">
@@ -34,6 +34,7 @@ const WarehouseList = () => {
                         contact_name={warehouse.contact_name}
                         contact_phone={warehouse.contact_phone}
                         contact_email={warehouse.contact_email}
+                        refreshList={fetchWarehouses}
                         />
                 ))}
             </section>
