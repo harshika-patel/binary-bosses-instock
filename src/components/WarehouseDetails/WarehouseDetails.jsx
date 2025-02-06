@@ -7,9 +7,9 @@ import axios from "axios";
 
 const WarehouseDetails = () => {
     const { warehouseId } = useParams();
-    const [warehouse, setWarehouse] = useState([]);
+    const [warehouse, setWarehouse] = useState(null);
 
-    const baseUrl = import.meta.env.API_URL;
+    const baseUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchWarehouse = async () => {
@@ -25,9 +25,10 @@ const WarehouseDetails = () => {
     }, [warehouseId]);
 
     if (!warehouse) return <p>Loading...</p>
+    
 
     return (
-        <section>
+        <section className="component-card">
             <div className="title-wrapper">
                 <div className="title-wrapper__left">
                     <Link to="/">
