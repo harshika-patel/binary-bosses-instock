@@ -1,7 +1,9 @@
 import "./WarehouseAddNew.scss";
 
 const WarehouseAddNew = () => {
-    return <section></section>;
+    return <section className="warehouse-add-new">
+
+    </section>;
 };
 
 export default WarehouseAddNew;

@@ -13,27 +13,39 @@ import InventoryAddNewPage from "./pages/InventoryAddNewPage/InventoryAddNewPage
 
 function App() {
 
-    return (
-        <>
-            <BrowserRouter>
-                <Header />
-                <main>
-                    <Routes>
-                        <Route path="/" element={<WarehousesPage />} />
-                        <Route path="/warehouses/:warehouseId" element={<WarehouseDetailsPage />} />
-                        <Route path="/warehouses/:warehouseId/edit" element={<WarehouseEditPage />} />
-                        <Route path="/warehouses/add" element={<WarehouseAddNewPage />} />
+  return (
+    <>
+      <BrowserRouter>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<WarehousesPage />} />
+            <Route
+              path="/warehouses/:warehouseId"
+              element={<WarehouseDetailsPage />}
+            />
+            <Route
+              path="/warehouses/:warehouseId/edit"
+              element={<WarehouseEditPage />}
+            />
+            <Route path="/warehouses/add" element={<WarehouseAddNewPage />} />
 
-                        <Route path="/inventory" element={<InventoryPage />} />
-                        <Route path="/inventory/:inventoryId" element={<InventoryItemDetailsPage />} />
-                        <Route path="/inventory/:inventoryId/edit" element={<InventoryEditItemPage />} />
-                        <Route path="/inventory/add" element={<InventoryAddNewPage />} />
-                    </Routes>
-                </main>
-                <Footer />
-            </BrowserRouter>
-        </>
-    );
+            <Route path="/inventory" element={<InventoryPage />} />
+            <Route
+              path="/inventory/:inventoryId"
+              element={<InventoryItemDetailsPage />}
+            />
+            <Route
+              path="/inventory/:inventoryId/edit"
+              element={<InventoryEditItemPage />}
+            />
+            <Route path="/inventory/add" element={<InventoryAddNewPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
