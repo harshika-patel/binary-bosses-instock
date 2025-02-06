@@ -42,11 +42,8 @@ const WarehouseInventoryList = ({ warehouseId }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize); // Cleanup listener
   }, []);
-<<<<<<< HEAD
     fetchData();
   }, [id];
-=======
->>>>>>> develop
 
   if (!inventory) return <p>Loading...</p>;
 
