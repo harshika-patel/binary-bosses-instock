@@ -45,28 +45,32 @@ const InventoryItemDetails = () => {
 
         <div className="details">
             <div>
-                <p className="details__labels">ITEM DESCRIPTION:</p>
-                <p className="details__outputs">{inventory.description}</p>
-            </div>
-            <div>
-                <p className="details__labels">CATEGORY:</p>
-                <p className="details__outputs">{inventory.category}</p>
-            </div>
-            <div className="deta">
                 <div>
-                    <p className="details__labels">STATUS:</p>
-                    <p>
-                        {inventory.status}
-                    </p>
+                    <p className="details__labels">ITEM DESCRIPTION:</p>
+                    <p className="details__outputs">{inventory.description}</p>
                 </div>
                 <div>
-                    <p className="details__labels">QUANTITY:</p>
-                    <p className="details__outputs">{inventory.quantity}</p>
+                    <p className="details__labels">CATEGORY:</p>
+                    <p className="details__outputs">{inventory.category}</p>
                 </div>
             </div>
-            <div>
-                <p className="details__labels">WAREHOUSE:</p>
-                <p className="details__outputs">{warehouse.warehouse_name}</p>
+            <div className="details_right-data">
+                <div className="status-and-quantity">
+                    <div>
+                        <p className="details__labels">STATUS:</p>
+                        <p>
+                            {inventory.status}
+                        </p>
+                    </div>
+                    <div>
+                        <p className="details__labels">QUANTITY:</p>
+                        <p className="details__outputs">{inventory.quantity}</p>
+                    </div>
+                </div>
+                <div>
+                    <p className="details__labels">WAREHOUSE:</p>
+                    <p className="details__outputs">{warehouse.warehouse_name}</p>
+                </div>
             </div>
         </div>
 

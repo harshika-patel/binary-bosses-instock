@@ -5,10 +5,10 @@ import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import editWhiteFill from "../../assets/Icons/edit-white-24px.svg";
 // import axios from "axios";
 
+
 const WarehouseDetails = ({ warehouse }) => {
   //   const { warehouseId } = useParams();
   //   const [warehouse, setWarehouse] = useState([]);
-
   //   const baseUrl = import.meta.env.VITE_API_URL;
 
   //   useEffect(() => {å

@@ -82,6 +82,18 @@
     margin-left: 1rem;
     margin-right: 1rem;
 
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__right-data{
+        @include tablet {
+            border-left: 1px solid $Cloud;
+            padding-left: 1rem;
+        }
+    }
+
     &__labels{
         font-size: .6875rem;
         line-height: 1rem;
@@ -108,4 +120,9 @@
         }
     }
 
+}
+
+.status-and-quantity{
+    display: flex;
+    justify-content: space-between;
 }

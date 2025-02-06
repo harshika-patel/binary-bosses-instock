@@ -1,8 +1,13 @@
+import { useState } from "react";
 import "./WarehouseCard.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import chevron_right from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
+import WarehouseDeleteModal from "../WarehouseDeleteModal/WarehouseDeleteModal";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 const WarehouseCard = ({
   warehouse_id,
@@ -13,7 +18,38 @@ const WarehouseCard = ({
   contact_name,
   contact_phone,
   contact_email,
+  refreshList,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+
+  const openDeleteModal = () => {
+    setIsModalOpen(true);
+    setSelectedWarehouse({ warehouse_id, name: warehouse_name });
+  };
+
+  const closeDeleteModal = () => {
+    setIsModalOpen(false);
+    setSelectedWarehouse(null);
+  };
+
+  const handleDelete = async () => {
+    if (!selectedWarehouse) return;
+
+    try {
+      await axios.delete(
+        `${API_URL}/warehouses/${selectedWarehouse.warehouse_id}`
+      );
+      console.log(
+        `Warehouse ${selectedWarehouse.warehouse_name} deleted successfully"`
+      );
+      closeDeleteModal();
+      refreshList();
+    } catch (error) {
+      console.error("Error deleting warehouse", error);
+    }
+  };
+
   return (
     <article className="warehouse-card">
       <div className="warehouse-card__content">
@@ -53,15 +89,24 @@ const WarehouseCard = ({
           </div>
         </div>
       </div>
-
       <div className="warehouse-card__actions">
-        <img
-          className="warehouse-card__icon"
-          src={deleteIcon}
-          alt="delete-icon"
-        />
+        <button className="warehouse-card__button" onClick={openDeleteModal}>
+          <img
+            className="warehouse-card__icon"
+            src={deleteIcon}
+            alt="delete-icon"
+          />
+        </button>
         <img className="warehouse-card__icon" src={editIcon} alt="edit-icon" />
       </div>
+      {isModalOpen && selectedWarehouse && (
+        <WarehouseDeleteModal
+          isOpen={isModalOpen}
+          onClose={closeDeleteModal}
+          onConfirm={handleDelete}
+          warehouseName={selectedWarehouse.warehouse_name}
+        />
+      )}
     </article>
   );
 };
