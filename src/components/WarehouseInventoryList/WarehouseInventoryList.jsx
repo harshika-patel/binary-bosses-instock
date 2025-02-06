@@ -5,7 +5,6 @@ import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import right from "../../assets/Icons/chevron_right-24px.svg";
 import dropdown from "../../assets/Icons/sort-24px.svg";
 import React, { useEffect, useState } from "react";
-
 import { useParams } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
