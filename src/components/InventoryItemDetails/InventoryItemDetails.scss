@@ -3,6 +3,11 @@
 @use "../../styles/_partials/mixins" as *;
 @use "../../styles/_partials/variables" as *;
 
+.component-card{
+    position: relative;
+    z-index: 5;
+}
+
 .title-wrapper{
     display: flex;
     justify-content: space-between;

@@ -28,7 +28,7 @@ const InventoryItemDetails = () => {
     }, [id]);
 
     return ( 
-    <section>
+    <section className="component-card">
         <div className="title-wrapper">
                 <div className="title-wrapper__left">
                     <Link to="/warehouses/:warehouseId">
@@ -52,7 +52,7 @@ const InventoryItemDetails = () => {
                 <p className="details__labels">CATEGORY:</p>
                 <p className="details__outputs">{inventory.category}</p>
             </div>
-            <div>
+            <div className="deta">
                 <div>
                     <p className="details__labels">STATUS:</p>
                     <p>
