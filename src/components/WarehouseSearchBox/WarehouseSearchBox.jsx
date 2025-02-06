@@ -1,4 +1,5 @@
 import "./WarehouseSearchBox.scss";
+import { Link } from "react-router-dom";
 import searchIcon from "../../assets/Icons/search-24px.svg";
 
 const WarehouseSearchBox = () => {
@@ -20,9 +21,11 @@ const WarehouseSearchBox = () => {
           />
         </div>
 
-        <button className="warehouse-search__add-button">
-          + Add New Warehouse
-        </button>
+        <Link to="/warehouses/add" className="warehouse-search__add-link">
+          <button className="warehouse-search__add-button">
+            + Add New Warehouse
+          </button>
+        </Link>
       </div>
     </div>
   );
