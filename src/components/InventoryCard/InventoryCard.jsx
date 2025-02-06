@@ -25,16 +25,16 @@ const InventoryCard = ({
     };
 
     const handleDelete = async () => {
-        if (!selectedInventory) return;
+        // if (!selectedInventory) return;
 
-        try {
-            await axios.delete(`${API_URL}/inventories/${selectedInventory.id}`);
-            console.log(`Inventory ${selectedInventory.name} deleted successfully"`);
-            closeDeleteModal();
-            refreshList();
-        } catch (error) {
-            console.error("Error deleting inventory", error);
-        }
+        // try {
+        //     await axios.delete(`${API_URL}/inventories/${selectedInventory.id}`);
+        //     console.log(`Inventory ${selectedInventory.name} deleted successfully"`);
+        //     closeDeleteModal();
+        //     refreshList();
+        // } catch (error) {
+        //     console.error("Error deleting inventory", error);
+        // }
     };
 
     return (
