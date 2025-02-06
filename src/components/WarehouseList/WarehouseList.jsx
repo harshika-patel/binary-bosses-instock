@@ -1,49 +1,42 @@
-import { useState } from "react";
-import WarehouseDeleteButton from "../WarehouseDeleteButton/WarehouseDeleteButton";
-import WarehouseConfirmationModal from "../WarehouseConfirmationModal/WarehouseConfirmationModal";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import WarehouseCard from "../../components/WarehouseCard/WarehouseCard";
 import "./WarehouseList.scss";
 
-const WarehouseList = ({ warehouses, handleDeleteWarehouse }) => {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+const API_URL = import.meta.env.VITE_API_URL;
 
-    const openDeleteModal = (warehouse) => {
-        setSelectedWarehouse(warehouse);
-        setModalIsOpen(true);
-    };
+const WarehouseList = () => {
+    const [warehouses, setWarehouses] = useState([]);
 
-    const closeDeleteModal = () => {
-        setModalIsOpen(false);
-    };
+    useEffect(() => {
+        const fetchWarehouses = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/warehouses`);
+                setWarehouses(response.data);
+            } catch (err) {
+                console.error("Error fetching warehoue:", err);
+            }
+        };
+    
+        fetchWarehouses();
+        }, []);
 
-    const confirmDelete = () => {
-        if (selectedWarehouse) {
-            handleDeleteWarehouse(selectedWarehouse.id); 
-            setModalIsOpen(false);
-        }
-    };
-
-    return (
-    <section>
-        <h1>Warehouse List</h1>
-        {warehouses.length === 0 ? (
-                <p>No warehouses available.</p>
-            ) : (
-            warehouses.map((warehouse) => (
-                <div key={warehouse.id} className="warehouse-item">
-                    <h2>{warehouse.name}</h2>
-                    <p>Location: {warehouse.location}</p>
-                    <WarehouseDeleteButton onClick={() => openDeleteModal(warehouse)} />
-                </div>
-                ))
-        )}
-        <WarehouseConfirmationModal 
-            isOpen={modalIsOpen} 
-            onClose={closeDeleteModal} 
-            warehouse={selectedWarehouse} 
-            onConfirm={confirmDelete} 
-        />
-    </section>
+        return (
+            <section className="warehouse-list">
+                {warehouses.map((warehouse) => (
+                    <WarehouseCard
+                        key={warehouse.id}
+                        warehouse_name={warehouse.warehouse_name}
+                        address={warehouse.address}
+                        city={warehouse.city}
+                        country={warehouse.country}
+                        contact_name={warehouse.contact_name}
+                        contact_phone={warehouse.contact_phone}
+                        contact_email={warehouse.contact_email}
+                        />
+                ))}
+            </section>
     );
 };
 
