@@ -1,23 +1,31 @@
 import React from "react";
 import closeIcon from "../../assets/Icons/close-24px.svg";
-import "./WarehouseDeleteModal.scss";
+import "./InventoryDeleteModal.scss";
 
-const WarehouseDeleteModal = ({ isOpen, onClose, onConfirm, warehouseName }) => {
+const InventoryDeleteModal = ({ isOpen, onClose, onConfirm, itemName }) => {
     if (!isOpen) return null;
 
     return (
         <div className="modal-overlay">
             <div className="modal">
+                {/* Close button */}
                 <img
                     className="modal__close-icon"
                     src={closeIcon}
                     alt="close-icon"
                     onClick={onClose}
                 />
+                
+                {/* Modal Content */}
                 <div className="modal__content">
-                <h2 className="modal__title">Delete {warehouseName} warehouse?</h2>
-                <p className="modal__text">Please confirm that you'd like to delete the {warehouseName} from the list of warehouses. You won't be able to undo this action.</p>
+                    <h2 className="modal__title">Delete {itemName}?</h2>
+                    <p className="modal__text">
+                        Please confirm that you'd like to delete {itemName} from the inventory.
+                        You won't be able to undo this action.
+                    </p>
                 </div>
+
+                {/* Action Buttons */}
                 <div className="modal__actions">
                     <button className="modal__button modal__button--secondary" onClick={onClose}>
                         Cancel
@@ -31,5 +39,4 @@ const WarehouseDeleteModal = ({ isOpen, onClose, onConfirm, warehouseName }) => 
     );
 };
 
-export default WarehouseDeleteModal;
-
+export default InventoryDeleteModal;
