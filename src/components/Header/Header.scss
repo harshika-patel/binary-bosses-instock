@@ -9,11 +9,12 @@
   justify-content: center;
   padding: 1rem;
   background-color: $Graphite;
-
+   height:12rem;
   &__logo {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-top: 1rem;
   }
 
   &__nav {
@@ -39,17 +40,25 @@
     transition: all 0.3s ease-in-out;
     text-align: center;
     border-radius: 1.25rem;
+    text-decoration: none;
   }
 
   &__btn:hover,
-  &__btn:focus,
-  &__btn:active {
+  &__btn:focus
+   {
     color: $White;
+    text-decoration: underline;
     background-color: $Instock-Black;
     transform: scale(1.05);
   }
+ 
 }
-
+.header__btn.active {
+  color: $White;
+  // text-decoration: underline;
+  background-color: $Instock-Black;
+  transform: scale(1.05);
+}
 @include tablet {
   .header {
     flex-direction: row;

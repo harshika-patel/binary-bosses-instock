@@ -1,14 +1,17 @@
 import "./WarehousesPage.scss";
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
+import WarehouseTableHeader from "../../components/WarehouseTableHeader/WarehouseTableHeader";
+import WarehouseSearchBox from "../../components/WarehouseSearchBox/WarehouseSearchBox";
+import WarehouseList from "../../components/WarehouseList/WarehouseList";
 
 const WarehousesPage = () => {
-    return (
-        <div>
-            <p>Warehouse Page</p>
-        </div>
-    );
+  return (
+    <div className="warehouse">
+      <WarehouseSearchBox />
+      <WarehouseTableHeader />
+      <WarehouseList />
+    </div>
+  );
+
 };
 
 export default WarehousesPage;

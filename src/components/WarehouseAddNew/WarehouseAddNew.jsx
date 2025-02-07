@@ -242,6 +242,8 @@ const WarehouseAddNew = () => {
       </form>
     </div>
   );
+
+
 };
 
 export default WarehouseAddNew;

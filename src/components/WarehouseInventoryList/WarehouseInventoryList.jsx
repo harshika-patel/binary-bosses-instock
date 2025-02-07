@@ -3,34 +3,36 @@ import axios from "axios";
 import edit from "../../assets/Icons/edit-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import right from "../../assets/Icons/chevron_right-24px.svg";
-import dropdown from "../../assets/Icons/arrow_drop_down-24px.svg";
+import dropdown from "../../assets/Icons/sort-24px.svg";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const WarehouseInventoryList = () => {
-  const { id } = useParams();
-  const [warehouse, setWarehouse] = useState(null);
+const API_URL = import.meta.env.VITE_API_URL;
+
+const WarehouseInventoryList = ({ warehouseId }) => {
+  // const { id } = useParams();
+  // const [warehouse, setWarehouse] = useState(null);
   const [inventory, setInventory] = useState([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const warehouseResponse = await axios.get(
-          "http://localhost:8080/warehouses"
-        );
-        setWarehouse(warehouseResponse.data);
+        // const warehouseResponse = await axios.get(
+        //   "http://localhost:8080/warehouses"
+        // );
+        // setWarehouse(warehouseResponse.data);
 
         const inventoryResponse = await axios.get(
-          `http://localhost:8080/warehouses/1/inventories`
+          `${API_URL}/warehouses/${warehouseId}/inventories`
         );
         setInventory(inventoryResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
-  }, [id]);
+  }, [warehouseId]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,7 +43,7 @@ const WarehouseInventoryList = () => {
     return () => window.removeEventListener("resize", handleResize); // Cleanup listener
   }, []);
 
-  if (!warehouse) return <p>Loading...</p>;
+  if (!inventory) return <p>Loading...</p>;
 
   return (
     <div className="warehouse-container">
@@ -125,7 +127,7 @@ const WarehouseInventoryList = () => {
                   Quantity <img src={dropdown} alt="dropdown" />
                 </th>
                 <th className="warehouse-inventory-table__header-title">
-                  Actions <img src={dropdown} alt="dropdown" />
+                  Actions
                 </th>
               </tr>
             </thead>
