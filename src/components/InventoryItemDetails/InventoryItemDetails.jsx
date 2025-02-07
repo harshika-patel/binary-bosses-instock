@@ -6,45 +6,54 @@ import editWhiteFill from "../../assets/Icons/edit-white-24px.svg";
 import axios from "axios";
 
 const InventoryItemDetails = () => {
-    const { id } = useParams();
-    const [warehouse, setWarehouse] = useState(null);
-    const [inventory, setInventory] = useState([]);
+    const { id } = useParams(); // Fetch ID from URL params
+    const [inventory, setInventory] = useState(null); // Changed to null initially
+    const [loading, setLoading] = useState(true); // To handle loading state
 
-    const baseUrl = import.meta.env.API_URL;
-  
+    const baseUrl = import.meta.env.API_URL; // Ensure this is set to your API base URL
+
     useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const warehouseResponse = await axios.get(`${baseUrl}/warehouses`);
-          setWarehouse(warehouseResponse.data);
-          
-          const inventoryResponse = await axios.get(`${baseUrl}/warehouses/${id}/inventories`);
-          setInventory(inventoryResponse.data);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
-      fetchData();
-    }, [id]);
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${baseUrl}/inventories/${id}`);
+                setInventory(response.data); // Set inventory data which includes warehouse_name
+                setLoading(false); // Set loading to false once data is fetched
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setLoading(false); // Stop loading in case of error
+            }
+        };
+
+        fetchData();
+    }, [id]); // Dependency on id, will refetch if the id changes
+
+    if (loading) {
+        return <p>Loading...</p>; // Display loading message while fetching data
+    }
+
+    if (!inventory) {
+        return <p>Inventory item not found.</p>; // Show error message if inventory is not found
+    }
 
     return ( 
     <section className="component-card">
         <div className="title-wrapper">
                 <div className="title-wrapper__left">
-                    <Link to="/warehouses/:warehouseId">
+                    <Link to="/inventory">
                         <img className="title-wrapper__arrow" src={arrowBack} alt="back" />
                     </Link>
-                    <h2 className="title-wrapper__h2">{inventory.inventory_name}</h2>
+                    <h2 className="title-wrapper__h2">{inventory.warehouse_name}</h2>
                 </div>
-                <div className="title-wrapper__right">
-                    <img src={editWhiteFill} alt="edit" />                  
-                </div>
+                <button className="title-wrapper__right">
+                    <img src={editWhiteFill} alt="edit" />   
+                    <span className="title-wrapper__edit-text">Edit</span>               
+                </button>
         </div>
 
         <hr className="divider"></hr>
 
         <div className="details">
-            <div>
+            <div className="details_left-data">
                 <div>
                     <p className="details__labels">ITEM DESCRIPTION:</p>
                     <p className="details__outputs">{inventory.description}</p>
@@ -54,6 +63,7 @@ const InventoryItemDetails = () => {
                     <p className="details__outputs">{inventory.category}</p>
                 </div>
             </div>
+            <hr className="details__divider"></hr>
             <div className="details_right-data">
                 <div className="status-and-quantity">
                     <div>
@@ -69,7 +79,7 @@ const InventoryItemDetails = () => {
                 </div>
                 <div>
                     <p className="details__labels">WAREHOUSE:</p>
-                    <p className="details__outputs">{warehouse.warehouse_name}</p>
+                    <p className="details__outputs">{inventory.warehouse_name}</p>
                 </div>
             </div>
         </div>

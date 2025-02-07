@@ -1,35 +1,12 @@
 import "./WarehouseDetails.scss";
-// import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import editWhiteFill from "../../assets/Icons/edit-white-24px.svg";
-// import axios from "axios";
-
 
 const WarehouseDetails = ({ warehouse }) => {
-  //   const { warehouseId } = useParams();
-  //   const [warehouse, setWarehouse] = useState([]);
-  //   const baseUrl = import.meta.env.VITE_API_URL;
-
-  //   useEffect(() => {å
-  //     const fetchWarehouse = async () => {
-  //       try {
-  //         const warehouseResponse = await axios.get(
-  //           `${baseUrl}/warehouses/${warehouseId}`
-  //         );
-  //         setWarehouse(warehouseResponse.data);
-  //       } catch (error) {
-  //         console.error(error);
-  //       }
-  //     };
-
-  //     fetchWarehouse();
-  //   }, [warehouseId]);
-
-  //   if (!warehouse) return <p>Loading...</p>;
 
   return (
-    <section>
+    <section className="component-card">
       <div className="title-wrapper">
         <div className="title-wrapper__left">
           <Link to="/">
@@ -37,17 +14,19 @@ const WarehouseDetails = ({ warehouse }) => {
           </Link>
           <h2 className="title-wrapper__h2">{warehouse.warehouse_name}</h2>
         </div>
-        <div className="title-wrapper__right">
+        <button className="title-wrapper__right">
           <img src={editWhiteFill} alt="edit" />
-        </div>
+          <span className="title-wrapper__edit-text">Edit</span>
+        </button>
       </div>
 
       <hr className="divider"></hr>
       <div className="details">
-        <div>
+        <div className="deails__address-section">
           <p className="details__labels">WAREHOUSE ADDRESS:</p>
           <p className="details__outputs">{warehouse.address}</p>
         </div>
+        <hr className="details__divider"></hr>
         <div className="details__contact-section">
           <div>
             <p className="details__labels">CONTANCT NAME:</p>
