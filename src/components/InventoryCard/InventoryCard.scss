@@ -3,7 +3,7 @@
 @use "../../styles/_partials/mixins" as *;
 @use "../../styles/_partials/variables" as *;
 
-.warehouse-card {
+.inventory-card {
   padding: 1.5rem;
   background-color: $White;
   border-top: 1px solid $Cloud;
@@ -63,7 +63,7 @@
       flex-direction: row;
       align-items: center;
       gap: 1rem;
-      flex: 1; // Ensures sections take equal width
+      flex: 1;
     }
 
     @include desktop {
@@ -101,7 +101,6 @@
     color: $Slate;
     font-size: 0.75rem;
     font-weight: bold;
-    text-transform: uppercase;
 
     @include tablet {
       display: none;
@@ -170,8 +169,8 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
-    transition: opacity 0.3s ease;
   }
+
   &__button {
     all: unset;
   }

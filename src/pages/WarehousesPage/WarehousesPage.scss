@@ -5,9 +5,16 @@
 
 .warehouse {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
+  margin-left: 1rem;
+  margin-right: 1rem;
 
-/* .warehouse__page {
-    position: relative;
-    z-index: 5;
-} */
+  @include tablet {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  @include desktop {
+    margin-left: 8.125rem;
+    margin-right: 8.125rem;
+  }
+}
