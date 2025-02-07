@@ -8,7 +8,6 @@
   z-index: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 1rem;
   background-color: $Graphite;
   height: 15rem;
@@ -51,6 +50,7 @@
     text-decoration: underline;
     background-color: $Instock-Black;
     transform: scale(1.05);
+    height:36px;
   }
 }
 .header__btn.active {
@@ -58,15 +58,17 @@
   // text-decoration: underline;
   background-color: $Instock-Black;
   transform: scale(1.05);
+  height:36px;
 }
 @include tablet {
   .header {
     flex-direction: row;
-    align-items: center;
+    
     justify-content: space-between;
     padding: 0 2rem;
+    padding-top:2rem;
     height: 14rem;
-    &__logo {
+    &__logo img {
       width: 8.0369rem;
       height: 1.75rem;
       top: 2rem;
