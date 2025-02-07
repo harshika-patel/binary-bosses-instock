@@ -11,7 +11,7 @@
   height: 100%;
   background-color: white;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   z-index: 1000;
   @include tablet {
@@ -21,77 +21,135 @@
 
 .modal {
   position: relative;
-  width: 100%;
+  width: 100vw;
   max-width: 400px;
+  height: 100vh;
   background-color: white;
-  padding: 20px;
-  // animation: fadeIn 0.3s ease-in-out;
+  padding: 16px;
+  flex-direction: column; 
   @include tablet {
-      max-width: 87.5%;
+      max-width: 42rem;
+      max-height: 16.375rem; // Ask Matt 
+      margin-top: 11.5625rem;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
       border-radius: 3px;
-      padding: 20px;
-      box-shadow: none;
+      padding: 24px;
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
   }
-  @include desktop {
-      max-width: 52.5%;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px; 
+    text-align: left; 
+    @include tablet {
+      margin-top: 24px;
+      padding-left: 16px;
+      padding-right: 16px;  
+      margin-left: auto; 
+      margin-right: auto;
+    }
   }
   &__title {
     font-family: "Titillium Web", sans-serif;
     font-size: 28px;
     color: $Instock-Black;
     font-weight: 600;
-    margin-bottom: 10px;
     line-height: 36px;
+    margin-bottom: 24px;
+    @include tablet {
+      margin-bottom: 16px;
+    }
   }
   &__text {
+    font-family: "Titillium Web", sans-serif;
     font-size: 15px;
     color: $Instock-Black;
-    margin-bottom: 20px;
     font-weight: 400;
+    margin-bottom: 16px;
     line-height: 26px;
+    @include tablet {
+      margin-bottom: 16px;
+    }
   }
   &__actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    padding: 16px;
     @include tablet {
-      margin-top: auto;
+      right: 16px;
+      bottom: 16px;
+      width: auto;
+      justify-content: flex-end;
     }
   }
   &__button {
     font-family: "Titillium Web", sans-serif;
     flex: 1;
-    padding: 10px;
+    padding: 8px 12px;
     border: none;
     border-radius: 1.25rem;
     font-size: .8125rem;
-    font-weight: 600;
+    line-height: 20px;
+    font-weight: 400;
+    height: 36px;
+    width: auto; 
+    min-width: unset; 
+    white-space: nowrap;
     cursor: pointer;
-      &--cancel {
+      @include tablet {
+        font-size: 1rem;
+        height: 38px;
+        padding: 8px 16px;
+        flex: 0;
+      }
+      &--secondary {
         background-color: white;
         border: 0.5px solid $Cloud;
-        // border-radius: 20px;
+        font-family: "Manhattan", sans-serif; 
         color: $Slate;
+        &:hover {
+          border-color: $Instock-Indigo; 
+          color: $Instock-Indigo; 
+        }
+        @include tablet {
+          &:hover {
+            border-color: $Instock-Indigo; 
+            color: $Instock-Indigo; 
+            text-decoration: underline;
+          }
+        }
       }
       &--confirm {
         background-color: #C94515;
         color: white;
+        &:hover {
+          background-color: $Graphite;
+        }
+        @include tablet {
+          &:hover {
+            background-color: $Graphite;
+            text-decoration: underline;
+          }
+        }
       }
   }
+  &__close-icon {
+    position: absolute;
+    top: 16px; 
+    right: 16px; 
+    width: 24px;
+    height: 24px;
+    cursor: pointer; 
+    transition: opacity 0.2s ease-in-out;
+    &:hover {
+      opacity: 1; 
+    }
+  }
 }
-
-.modal__button--cancel:hover {
-  background-color: #e0e0e0;
-  opacity: 0.8;
-}
-
-.modal__button--confirm:hover {
-  background-color: #d32f2f;
-  opacity: 0.8;
-}
-
 
