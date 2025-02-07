@@ -14,17 +14,19 @@ const WarehouseDetails = ({ warehouse }) => {
           </Link>
           <h2 className="title-wrapper__h2">{warehouse.warehouse_name}</h2>
         </div>
-        <div className="title-wrapper__right">
+        <button className="title-wrapper__right">
           <img src={editWhiteFill} alt="edit" />
-        </div>
+          <span className="title-wrapper__edit-text">Edit</span>
+        </button>
       </div>
 
       <hr className="divider"></hr>
       <div className="details">
-        <div>
+        <div className="deails__address-section">
           <p className="details__labels">WAREHOUSE ADDRESS:</p>
           <p className="details__outputs">{warehouse.address}</p>
         </div>
+        <hr className="details__divider"></hr>
         <div className="details__contact-section">
           <div>
             <p className="details__labels">CONTANCT NAME:</p>

@@ -44,9 +44,10 @@ const InventoryItemDetails = () => {
                     </Link>
                     <h2 className="title-wrapper__h2">{inventory.warehouse_name}</h2>
                 </div>
-                <div className="title-wrapper__right">
-                    <img src={editWhiteFill} alt="edit" />                  
-                </div>
+                <button className="title-wrapper__right">
+                    <img src={editWhiteFill} alt="edit" />   
+                    <span className="title-wrapper__edit-text">Edit</span>               
+                </button>
         </div>
 
         <hr className="divider"></hr>
