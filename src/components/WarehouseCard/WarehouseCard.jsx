@@ -34,15 +34,11 @@ const WarehouseCard = ({
   };
 
   const handleDelete = async () => {
-    if (!selectedWarehouse) return;
-
     try {
       await axios.delete(
         `${API_URL}/warehouses/${selectedWarehouse.warehouse_id}`
       );
-      console.log(
-        `Warehouse ${selectedWarehouse.warehouse_name} deleted successfully"`
-      );
+      console.log(`Warehouse ${selectedWarehouse.warehouse_name} deleted successfully`);
       closeDeleteModal();
       refreshList();
     } catch (error) {
