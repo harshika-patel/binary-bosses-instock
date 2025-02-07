@@ -5,6 +5,7 @@ import axios from "axios";
 import chevron_right from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
+import InventoryDeleteModal from "../InventoryDeleteModal/InventoryDeleteModal";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -15,9 +16,11 @@ const InventoryCard = ({
   status,
   quantity,
   warehouse_id,
+  refreshList,
 }) => {
   const [warehouseName, setWarehouseName] = useState("Loading...");
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
   // Fetch warehouse name using warehouse_id
   useEffect(() => {
     const fetchWarehouseName = async () => {
@@ -36,6 +39,27 @@ const InventoryCard = ({
       fetchWarehouseName();
     }
   }, [warehouse_id]);
+
+  const openDeleteModal = () => {
+    setIsModalOpen(true);
+    setSelectedItem({ inventory_id, item_name });
+  };
+
+  const closeDeleteModal = () => {
+    setIsModalOpen(false);
+    setSelectedItem(null);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${API_URL}/inventory/${selectedItem.inventory_id}`);
+      console.log(`Item ${selectedItem.item_name} deleted successfully`);
+      closeDeleteModal();
+      refreshList();
+    } catch (error) {
+      console.error("Error deleting inventory item", error);
+    }
+  };
 
   return (
     <article className="inventory-card">
@@ -88,14 +112,9 @@ const InventoryCard = ({
         </div>
       </div>
 
-      {/* Actions: Delete & Edit */}
       <div className="inventory-card__actions">
-        <button className="inventory-card__button">
-          <img
-            className="inventory-card__icon"
-            src={deleteIcon}
-            alt="delete-icon"
-          />
+      <button className="inventory-card__button" onClick={openDeleteModal}>
+          <img className="inventory-card__icon" src={deleteIcon} alt="delete-icon" />
         </button>
         <Link to={`/inventory/${inventory_id}/edit`}>
           <img
@@ -105,6 +124,14 @@ const InventoryCard = ({
           />
         </Link>
       </div>
+      {isModalOpen && selectedItem && (
+        <InventoryDeleteModal
+          isOpen={isModalOpen}
+          onClose={closeDeleteModal}
+          onConfirm={handleDelete}
+          itemName={selectedItem.item_name}
+        />
+      )}
     </article>
   );
 };
