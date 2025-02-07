@@ -34,7 +34,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
   // Handle the deletion of the selected inventory
   const handleDelete = () => {
     if (selectedInventory) {
-      fetch(`http://localhost:8080/warehouses/${warehouseId}/inventories/${selectedInventory.id}`, {
+      fetch(`${API_URL}/warehouses/${warehouseId}/inventories/${selectedInventory.id}`, {
         method: 'DELETE',
       })
         .then(response => response.json())
