@@ -1,35 +1,12 @@
 import "./WarehouseDetails.scss";
-// import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import editWhiteFill from "../../assets/Icons/edit-white-24px.svg";
-// import axios from "axios";
-
 
 const WarehouseDetails = ({ warehouse }) => {
-  //   const { warehouseId } = useParams();
-  //   const [warehouse, setWarehouse] = useState([]);
-  //   const baseUrl = import.meta.env.VITE_API_URL;
-
-  //   useEffect(() => {å
-  //     const fetchWarehouse = async () => {
-  //       try {
-  //         const warehouseResponse = await axios.get(
-  //           `${baseUrl}/warehouses/${warehouseId}`
-  //         );
-  //         setWarehouse(warehouseResponse.data);
-  //       } catch (error) {
-  //         console.error(error);
-  //       }
-  //     };
-
-  //     fetchWarehouse();
-  //   }, [warehouseId]);
-
-  //   if (!warehouse) return <p>Loading...</p>;
 
   return (
-    <section>
+    <section className="component-card">
       <div className="title-wrapper">
         <div className="title-wrapper__left">
           <Link to="/">

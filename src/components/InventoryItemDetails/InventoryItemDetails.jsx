@@ -52,7 +52,7 @@ const InventoryItemDetails = () => {
         <hr className="divider"></hr>
 
         <div className="details">
-            <div>
+            <div className="details_left-data">
                 <div>
                     <p className="details__labels">ITEM DESCRIPTION:</p>
                     <p className="details__outputs">{inventory.description}</p>
@@ -62,6 +62,7 @@ const InventoryItemDetails = () => {
                     <p className="details__outputs">{inventory.category}</p>
                 </div>
             </div>
+            <hr className="details__divider"></hr>
             <div className="details_right-data">
                 <div className="status-and-quantity">
                     <div>

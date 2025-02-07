@@ -9,13 +9,16 @@
     background-color: white;
     height: 22.8125rem;
     border-radius: .1875rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-left: 1rem;
+    margin-right: 1rem;
+
 }
 
 .title-wrapper{
     display: flex;
     justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 2rem;
 
     &__left{
         display: flex;
@@ -82,18 +85,30 @@
 }
 
 .details{
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 2rem;
 
     @include tablet {
         display: flex;
         justify-content: space-between;
     }
 
-    &__right-data{
+    &__left-data{
         @include tablet {
-            border-left: 1px solid $Cloud;
-            padding-left: 1rem;
+            width: 50%;
+        }
+    }
+
+    &__right-data {
+        @include tablet {
+            width: 50%; 
+        }
+    }
+
+    &__divider{
+        display: none;
+
+        @include tablet {
+            display: flex;
         }
     }
 
