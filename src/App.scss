@@ -1,8 +1,27 @@
-::after,::before{
-    box-sizing: border-box;
+@use "./styles/_partials/fonts" as *;
+@use "./styles/_partials/globals" as *;
+@use "./styles/_partials/mixins" as *;
+@use "./styles/_partials/variables" as *;
+
+::after,
+::before {
+  box-sizing: border-box;
 }
-body{
+body {
   margin: 0;
   padding: 0;
- 
+}
+
+main {
+  position: relative;
+  margin-top: -3rem;
+  z-index: 1;
+
+  @include tablet {
+    margin-top: -5rem;
+  }
+
+  @include desktop {
+    margin-top: -5rem;
+  }
 }
