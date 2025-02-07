@@ -224,42 +224,42 @@ const WarehouseEdit = () => {
       <form onSubmit={handleSubmit} className="warehouse-edit__form">
         <div className="form-section">
         <div className="section">
-          <h2 className="warehouse-edit__subheading">Warehouse Details</h2>
-          <label htmlFor="warehouse_name" className="warehouse-edit__label">Warehouse Name</label>
-          <input type="text" name="warehouse_name" className="warehouse-edit__input" value={formData.warehouse_name} onChange={handleChange} />
+          <h2>Warehouse Details</h2>
+          <label htmlFor="warehouse_name"><h3>Warehouse Name</h3></label>
+          <input type="text" name="warehouse_name" value={formData.warehouse_name} onChange={handleChange} />
 
-          <label htmlFor="address" className="warehouse-edit__label">Street Address</label>
+          <label htmlFor="address" className="warehouse-edit__label"><h3>Street Address</h3></label>
           <input type="text" name="address" className="warehouse-edit__input" value={formData.address} onChange={handleChange} />
 
-          <label htmlFor="city" className="warehouse-edit__label">City</label>
+          <label htmlFor="city" className="warehouse-edit__label"><h3>City</h3></label>
           <input type="text" name="city" className="warehouse-edit__input" value={formData.city} onChange={handleChange} />
 
-          <label htmlFor="country" className="warehouse-edit__label">Country</label>
+          <label htmlFor="country" className="warehouse-edit__label"><h3>Country</h3></label>
           <input type="text" name="country" className="warehouse-edit__input" value={formData.country} onChange={handleChange} />
         </div>
-
-        <div className="warehouse-edit__section">
-          <h2 className="warehouse-edit__subheading">Contact Details</h2>
-          <label htmlFor="contact_name" className="warehouse-edit__label">Contact Name</label>
+        <hr className="warehouse-edit__divider" />
+        <div className="section">
+          <h2>Contact Details</h2>
+          <label htmlFor="contact_name" className="warehouse-edit__label"><h3>Contact Name</h3></label>
           <input type="text" name="contact_name" className="warehouse-edit__input" value={formData.contact_name} onChange={handleChange} />
 
-          <label htmlFor="contact_position" className="warehouse-edit__label">Position</label>
+          <label htmlFor="contact_position" className="warehouse-edit__label"><h3>Position</h3></label>
           <input type="text" name="contact_position" className="warehouse-edit__input" value={formData.contact_position} onChange={handleChange} />
 
-          <label htmlFor="contact_phone" className="warehouse-edit__label">Phone Number</label>
+          <label htmlFor="contact_phone" className="warehouse-edit__label"><h3>Phone Numbe</h3>r</label>
           <input type="tel" name="contact_phone" className="warehouse-edit__input" value={formData.contact_phone} onChange={handleChange} />
 
-          <label htmlFor="contact_email" className="warehouse-edit__label">Email</label>
+          <label htmlFor="contact_email" className="warehouse-edit__label"><h3>Email</h3></label>
           <input type="email" name="contact_email" className="warehouse-edit__input" value={formData.contact_email} onChange={handleChange} />
         </div>
 
-        <div className="warehouse-edit__buttons">
+        <div className="buttons">
           <Link to="/warehouse-details">
-            <button type="button" className="warehouse-edit__button warehouse-edit__button--cancel">Cancel</button>
+            <button type="button" className="cancel">Cancel</button>
           </Link>
-          <button type="submit" className="warehouse-edit__button warehouse-edit__button--save" disabled={loading}>
-            Save
-            {loading ? "Updating..." : "Update Warehouse"}
+          <button type="submit" className="cancel save" disabled={loading}>
+            
+            {loading ? "Updating..." : "Save"}
           </button>
         </div>
         </div>
