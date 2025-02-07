@@ -5,23 +5,54 @@ import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import right from "../../assets/Icons/chevron_right-24px.svg";
 import dropdown from "../../assets/Icons/sort-24px.svg";
 import React, { useEffect, useState } from "react";
+
+import InventoryDeleteModal from "./InventoryDeleteModal/InventoryDeleteModal";
 import { useParams } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const WarehouseInventoryList = ({ warehouseId }) => {
-  // const { id } = useParams();
-  // const [warehouse, setWarehouse] = useState(null);
+  const { id } = useParams();
+  const [warehouse, setWarehouse] = useState(null);
   const [inventory, setInventory] = useState([]);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedInventory, setSelectedInventory] = useState(null);
 
+  // Open the modal with the selected inventory to delete
+  const openDeleteModal = (inventory) => {
+    setSelectedInventory(inventory);
+    setIsModalOpen(true);
+  };
+
+  // Close the modal
+  const closeDeleteModal = () => {
+    setIsModalOpen(false);
+    setSelectedInventory(null);
+  };
+
+  // Handle the deletion of the selected inventory
+  const handleDelete = () => {
+    if (selectedInventory) {
+      fetch(`http://localhost:8080/warehouses/${warehouseId}/inventories/${selectedInventory.id}`, {
+        method: 'DELETE',
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Inventory deleted:', data);
+          // Optionally, you can also update your state here to reflect the changes
+          closeDeleteModal();
+        })
+        .catch(error => console.error('Error deleting inventory:', error));
+    }
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const warehouseResponse = await axios.get(
-        //   "http://localhost:8080/warehouses"
-        // );
-        // setWarehouse(warehouseResponse.data);
+        const warehouseResponse = await axios.get(
+           `${API_URL}/warehouses`
+        );
+        setWarehouse(warehouseResponse.data);
 
         const inventoryResponse = await axios.get(
           `${API_URL}/warehouses/${warehouseId}/inventories`
@@ -43,33 +74,33 @@ const WarehouseInventoryList = ({ warehouseId }) => {
     return () => window.removeEventListener("resize", handleResize); // Cleanup listener
   }, []);
 
-  if (!inventory) return <p>Loading...</p>;
+  if (!warehouse) return <p>Loading...</p>;
 
   return (
     <div className="warehouse-container">
       {isMobile ? (
         inventory.map((item) => (
-          <div key={item.id} className="inventory-card">
-            <div className="inventory-card__content">
-              <div className="inventory-card__info">
-                <hr className="inventory-card__line" />
-                <div className="inventory-card__details">
-                  <div className="inventory-card__details-item">
-                    <p className="inventory-card__details-item__title">
+          <div key={item.id} className="inventory-cards">
+            <div className="inventory-cards__data">
+              <div className="inventory-cards__info">
+                <hr className="inventory-cards__line" />
+                <div className="inventory-cards__detail">
+                  <div className="inventory-cards__detail-item">
+                    <p className="inventory-cards__detail-item__title">
                       INVENTORY ITEM
                     </p>
-                    <p className="inventory-card__details-item__data">
+                    <p className="inventory-cards__detail-item__data">
                       <a href={`/inventory/${item.id}`}>
-                        {item.item_name} <img src={right} alt="more details" />
+                        {item.item_name} <img src={right} alt="more detail" />
                       </a>
                     </p>
                   </div>
-                  <div className="inventory-card__details-item">
-                    <p className="inventory-card__details-item__title">
+                  <div className="inventory-cards__detail-item">
+                    <p className="inventory-cards__detail-item__title">
                       STATUS
                     </p>
                     <p
-                      className={`inventory-card__status ${
+                      className={`inventory-cards__status ${
                         item.status == "In Stock" ? "in-stock" : "out-of-stock"
                       }`}
                     >
@@ -77,35 +108,47 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                     </p>
                   </div>
                 </div>
-                <div className="inventory-card__details">
-                  <div className="inventory-card__details-item">
-                    <p className="inventory-card__details-item__title">
+                <div className="inventory-cards__detail">
+                  <div className="inventory-cards__detail-item">
+                    <p className="inventory-cards__detail-item__title">
                       CATEGORY{" "}
                     </p>
-                    <p className="inventory-card__details-item__data">
+                    <p className="inventory-cards__detail-item__data">
                       {item.category}
                     </p>
                   </div>
-                  <div className="inventory-card__details-item">
-                    <p className="inventory-card__details-item__title">QTY</p>
-                    <p className="inventory-card__details-item__data">
+                  <div className="inventory-cards__detail-item">
+                    <p className="inventory-cards__detail-item__title">QTY</p>
+                    <p className="inventory-cards__detail-item__data">
                       {item.quantity}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="inventory-card__actions">
+              <div className="inventory-cards__actions">
+              <button className="inventory-cards__button" onClick={() => openDeleteModal(inventory)}>
                 <img
                   src={deleteIcon}
                   alt="delete"
-                  className="inventory-card__delete-icon"
+                  className="inventory-cards__delete-icon"
                 />
+                </button>
+                <Link to={`/inventory/${item.id}/edit`}>
                 <img
                   src={edit}
                   alt="edit"
-                  className="inventory-card__edit-icon"
+                  className="inventory-cards__edit-icon"
                 />
+                  </Link>
               </div>
+              {isModalOpen && selectedInventory && (
+        <InventoryDeleteModal
+          isOpen={isModalOpen}
+          onClose={closeDeleteModal}
+          onConfirm={handleDelete}
+          inventoryName={selectedInventory.name}
+        />
+      )}
             </div>
           </div>
         ))
@@ -143,7 +186,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                       <img
                         className="warehouse-inventory-table__row-data__icon"
                         src={right}
-                        alt="get more details arrow"
+                        alt="get more detail arrow"
                       ></img>
                     </a>
                   </td>

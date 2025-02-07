@@ -5,20 +5,22 @@
 
 
 
-.inventory-card {
+.inventory-cards {
   background: $White;
-transition: transform 0.3s;
+  transition: transform 0.3s;
+ 
   &:hover {
     transform: scale(1.02);
   }
 
-  &__content {
+  &__data {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    padding: 0;
+    justify-content:space-between;
+    padding: 10;
   }
-  &__content:hover {
+
+  &__data:hover {
     background: rgba($Instock-Indigo, 0.1);
   }
 
@@ -31,13 +33,15 @@ transition: transform 0.3s;
     border-top: 1px solid $Cloud;
   }
 
-  &__details {
+  &__detail {
     display: flex;
     justify-content: space-between;
+   
+    padding-top:1rem;
     padding-left: 1.5rem;
   }
 
-  &__details-item {
+  &__detail-item {
     flex: 1;
 
     &__title {
@@ -45,7 +49,7 @@ transition: transform 0.3s;
       font-weight: 600;
       color: $Slate;
       text-transform: uppercase;
-      margin-bottom: 2px;
+      margin-bottom: 8px;
     }
 
     &__data {
@@ -94,7 +98,7 @@ transition: transform 0.3s;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1.5rem;
+    padding: 12px 1.5rem;
   }
 
   &__edit-icon,
