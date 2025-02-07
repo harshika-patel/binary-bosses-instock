@@ -1,5 +1,5 @@
 import React from "react";
-import "./InventoryDeleteModal.scss"; // Adjust path if needed
+import './InventoryDeleteModel.scss';
 
 const InventoryDeleteModal = ({ isOpen, onClose, onConfirm, inventoryName }) => {
     if (!isOpen) return null;

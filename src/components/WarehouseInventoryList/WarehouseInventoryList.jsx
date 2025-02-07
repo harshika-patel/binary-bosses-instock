@@ -3,11 +3,11 @@ import axios from "axios";
 import edit from "../../assets/Icons/edit-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import right from "../../assets/Icons/chevron_right-24px.svg";
+import InventoryDeleteModal from "../InventoryDeleteModel/InventoryDeleteModel";
 import dropdown from "../../assets/Icons/sort-24px.svg";
 import React, { useEffect, useState } from "react";
 
-import InventoryDeleteModal from "./InventoryDeleteModal/InventoryDeleteModal";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -204,17 +204,29 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                     {item.quantity}
                   </td>
                   <td className="warehouse-inventory-table__row-data">
+                  <button className="inventory-cards__button" onClick={() => openDeleteModal(inventory)}>
                     <img
                       src={deleteIcon}
                       alt="delete"
                       className="warehouse-inventory-table__row-data__delete-icon"
                     />
+                  </button>
+                    <Link to={`/inventory/${item.id}/edit`}>
                     <img
                       src={edit}
                       alt="edit"
                       className="warehouse-inventory-table__row-data__edit-icon"
-                    />
+                    /></Link>
+                    {isModalOpen && selectedInventory && (
+                      <InventoryDeleteModal
+                        isOpen={isModalOpen}
+                        onClose={closeDeleteModal}
+                        onConfirm={handleDelete}
+                        inventoryName={selectedInventory.name}
+                      />
+                    )}
                   </td>
+                  
                 </tr>
               ))}
             </tbody>
