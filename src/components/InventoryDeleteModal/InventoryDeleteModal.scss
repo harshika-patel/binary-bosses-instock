@@ -38,15 +38,6 @@
         display: flex;
         justify-content: space-between;
     }
-    &__container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding: 16px; 
-      @include tablet {
-        padding: 24px;
-      }
-    }
     &__content {
       display: flex;
       flex-direction: column;

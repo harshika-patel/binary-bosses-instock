@@ -8,31 +8,29 @@ const InventoryDeleteModal = ({ isOpen, onClose, onConfirm, itemName }) => {
     return (
         <div className="modal-overlay">
             <div className="modal">
-            <div className="modal__container">
-                <img
-                    className="modal__close-icon"
-                    src={closeIcon}
-                    alt="close-icon"
-                    onClick={onClose}
-                />
-                <div className="modal__content">
-                    <h2 className="modal__title">Delete {itemName}?</h2>
-                    <p className="modal__text">
-                        Please confirm that you'd like to delete {itemName} from the inventory.
-                        You won't be able to undo this action.
-                    </p>
-                </div>
-                <div className="modal__actions">
-                    <button className="modal__button modal__button--secondary" onClick={onClose}>
-                        Cancel
-                    </button>
-                    <button className="modal__button modal__button--confirm" onClick={onConfirm}>
-                        Delete
-                    </button>
+                    <img
+                        className="modal__close-icon"
+                        src={closeIcon}
+                        alt="close-icon"
+                        onClick={onClose}
+                    />
+                    <div className="modal__content">
+                        <h2 className="modal__title">Delete {itemName}?</h2>
+                        <p className="modal__text">
+                            Please confirm that you'd like to delete {itemName} from the inventory.
+                            You won't be able to undo this action.
+                        </p>
+                    </div>
+                    <div className="modal__actions">
+                        <button className="modal__button modal__button--secondary" onClick={onClose}>
+                            Cancel
+                        </button>
+                        <button className="modal__button modal__button--confirm" onClick={onConfirm}>
+                            Delete
+                        </button>
+                    </div>
                 </div>
             </div>
-            </div>
-        </div>
     );
 };
 
