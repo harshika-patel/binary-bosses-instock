@@ -18,7 +18,7 @@ const WarehouseCard = ({
   contact_name,
   contact_phone,
   contact_email,
-  refreshList,
+  refreshList = () => {},
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedWarehouse, setSelectedWarehouse] = useState(null);
@@ -35,8 +35,12 @@ const WarehouseCard = ({
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${API_URL}/warehouses/${selectedWarehouse.warehouse_id}`);
-      console.log(`Warehouse ${selectedWarehouse.warehouse_name} deleted successfully`);
+      await axios.delete(
+        `${API_URL}/warehouses/${selectedWarehouse.warehouse_id}`
+      );
+      console.log(
+        `Warehouse ${selectedWarehouse.warehouse_name} deleted successfully`
+      );
       closeDeleteModal();
       refreshList();
     } catch (error) {
@@ -104,7 +108,7 @@ const WarehouseCard = ({
           isOpen={isModalOpen}
           onClose={closeDeleteModal}
           onConfirm={handleDelete}
-          warehouseName={selectedWarehouse.warehouse_name} 
+          warehouseName={selectedWarehouse.warehouse_name}
         />
       )}
     </article>

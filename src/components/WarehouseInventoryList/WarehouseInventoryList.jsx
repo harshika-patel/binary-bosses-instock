@@ -7,7 +7,7 @@ import InventoryDeleteModal from "../InventoryDeleteModel/InventoryDeleteModel";
 import dropdown from "../../assets/Icons/sort-24px.svg";
 import React, { useEffect, useState } from "react";
 
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -15,7 +15,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
   const { id } = useParams();
   const [warehouse, setWarehouse] = useState(null);
   const [inventory, setInventory] = useState([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedInventory, setSelectedInventory] = useState(null);
 
@@ -34,24 +34,25 @@ const WarehouseInventoryList = ({ warehouseId }) => {
   // Handle the deletion of the selected inventory
   const handleDelete = () => {
     if (selectedInventory) {
-      fetch(`${API_URL}/warehouses/${warehouseId}/inventories/${selectedInventory.id}`, {
-        method: 'DELETE',
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Inventory deleted:', data);
+      fetch(
+        `${API_URL}/warehouses/${warehouseId}/inventories/${selectedInventory.id}`,
+        {
+          method: "DELETE",
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Inventory deleted:", data);
           // Optionally, you can also update your state here to reflect the changes
           closeDeleteModal();
         })
-        .catch(error => console.error('Error deleting inventory:', error));
+        .catch((error) => console.error("Error deleting inventory:", error));
     }
   };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const warehouseResponse = await axios.get(
-           `${API_URL}/warehouses`
-        );
+        const warehouseResponse = await axios.get(`${API_URL}/warehouses`);
         setWarehouse(warehouseResponse.data);
 
         const inventoryResponse = await axios.get(
@@ -83,9 +84,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
           <div key={item.id} className="inventory-cards">
             <div className="inventory-cards__data">
               <div className="inventory-cards__info">
-               
                 <div className="inventory-cards__detail">
-                   
                   <div className="inventory-cards__detail-item">
                     <p className="inventory-cards__detail-item__title">
                       INVENTORY ITEM
@@ -127,34 +126,37 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                 </div>
               </div>
               <div className="inventory-cards__actions">
-              <button className="inventory-cards__button" onClick={() => openDeleteModal(inventory)}>
-                <img
-                  src={deleteIcon}
-                  alt="delete"
-                  className="inventory-cards__delete-icon"
-                />
+                <button
+                  className="inventory-cards__button"
+                  onClick={() => openDeleteModal(inventory)}
+                >
+                  <img
+                    src={deleteIcon}
+                    alt="delete"
+                    className="inventory-cards__delete-icon"
+                  />
                 </button>
                 <Link to={`/inventory/${item.id}/edit`}>
-                <img
-                  src={edit}
-                  alt="edit"
-                  className="inventory-cards__edit-icon"
-                />
-                  </Link>
+                  <img
+                    src={edit}
+                    alt="edit"
+                    className="inventory-cards__edit-icon"
+                  />
+                </Link>
               </div>
               {isModalOpen && selectedInventory && (
-        <InventoryDeleteModal
-          isOpen={isModalOpen}
-          onClose={closeDeleteModal}
-          onConfirm={handleDelete}
-          inventoryName={selectedInventory.name}
-        />
-      )}
+                <InventoryDeleteModal
+                  isOpen={isModalOpen}
+                  onClose={closeDeleteModal}
+                  onConfirm={handleDelete}
+                  inventoryName={selectedInventory.name}
+                />
+              )}
             </div>
           </div>
         ))
       ) : (
-        <div class name="warehouse-inventory-table-container">
+        <div className="warehouse-inventory-table-container">
           <table className="warehouse-inventory-table">
             <thead>
               <tr className="warehouse-inventory-table__header">
@@ -205,19 +207,23 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                     {item.quantity}
                   </td>
                   <td className="warehouse-inventory-table__row-data">
-                  <button className="inventory-cards__button" onClick={() => openDeleteModal(inventory)}>
-                    <img
-                      src={deleteIcon}
-                      alt="delete"
-                      className="warehouse-inventory-table__row-data__delete-icon"
-                    />
-                  </button>
+                    <button
+                      className="inventory-cards__button"
+                      onClick={() => openDeleteModal(inventory)}
+                    >
+                      <img
+                        src={deleteIcon}
+                        alt="delete"
+                        className="warehouse-inventory-table__row-data__delete-icon"
+                      />
+                    </button>
                     <Link to={`/inventory/${item.id}/edit`}>
-                    <img
-                      src={edit}
-                      alt="edit"
-                      className="warehouse-inventory-table__row-data__edit-icon"
-                    /></Link>
+                      <img
+                        src={edit}
+                        alt="edit"
+                        className="warehouse-inventory-table__row-data__edit-icon"
+                      />
+                    </Link>
                     {isModalOpen && selectedInventory && (
                       <InventoryDeleteModal
                         isOpen={isModalOpen}
@@ -227,7 +233,6 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                       />
                     )}
                   </td>
-                  
                 </tr>
               ))}
             </tbody>
