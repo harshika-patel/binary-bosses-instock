@@ -1,3 +1,4 @@
+import InventoryAddNew from "../../components/InventoryAddNew/InventoryAddNew";
 import "./InventoryAddNewPage.scss";
 // import axios from "axios";
 // import { useEffect, useState } from "react";
@@ -6,7 +7,7 @@ import "./InventoryAddNewPage.scss";
 const InventoryAddNewPage = () => {
     return (
         <div>
-            <p>Add new invetory page</p>
+            <InventoryAddNew />
         </div>
     );
 };
