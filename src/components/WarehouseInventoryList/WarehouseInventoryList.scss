@@ -3,12 +3,16 @@
 @use "../../styles/_partials/variables" as *;
 @use "../../styles/_partials/mixins" as *;
 
-
+.warehouse-container{
+  position: relative;
+  top:-2.5vh;
+}
 
 .inventory-cards {
   background: $White;
   transition: transform 0.3s;
- 
+  margin:0 1rem;
+  border-bottom: 1px solid $Cloud;
   &:hover {
     transform: scale(1.02);
   }
@@ -28,15 +32,11 @@
     flex: 1;
   }
 
-  &__line {
-    border: none;
-    border-top: 1px solid $Cloud;
-  }
+  
 
   &__detail {
     display: flex;
     justify-content: space-between;
-   
     padding-top:1rem;
     padding-left: 1.5rem;
   }

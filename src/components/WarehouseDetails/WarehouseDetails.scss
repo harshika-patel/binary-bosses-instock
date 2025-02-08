@@ -3,11 +3,29 @@
 @use "../../styles/_partials/mixins" as *;
 @use "../../styles/_partials/variables" as *;
 
+
+.component-cards{
+    position: relative;
+    top:-2.5vh;
+    z-index: 5;
+    background-color: $White;
+    border-radius: 0.1875rem;
+        
+    margin-left: 1rem;
+    margin-right: 1rem;
+    @include tablet{
+        margin:0 2rem;
+    }
+    @include desktop{
+        margin:0 7.5rem;
+    }
+}
+  
 .title-wrapper{
     display: flex;
     justify-content: space-between;
     margin: 2rem;
-
+    
     &__left{
         display: flex;
     }

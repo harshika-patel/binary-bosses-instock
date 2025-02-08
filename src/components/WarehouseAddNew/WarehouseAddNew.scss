@@ -3,6 +3,10 @@
 @use "../../styles/_partials/variables" as *;
 @use "../../styles/_partials/mixins" as *;
 
+// *,*::after, *::before {
+//   box-sizing: border-box;
+//   margin:5px;
+// }
 .warehouse-form {
   display: flex;
   flex-direction: column;
@@ -12,13 +16,13 @@
   justify-content: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
-  top: -9vh;
+  top:-2.5vh;
   border-radius: 3px;
 
   &__header {
     display: flex;
     flex-direction: row;
-   padding:8px 0;
+    padding:8px 0;
     width: 100%;
     &-link {
       display: flex;
@@ -43,8 +47,10 @@
   h2 {
     font-size: 20px;
     line-height: 28px;
+    
   }
   h3 {
+    margin-top: 1rem;
     font-size: 13px;
     line-height: 10px;
   }

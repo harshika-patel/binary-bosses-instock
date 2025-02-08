@@ -11,6 +11,7 @@
   padding: 1rem;
   background-color: $Graphite;
   height: 15rem;
+  
   &__logo {
     display: flex;
     flex-direction: row;
@@ -26,7 +27,7 @@
     font-weight: 600;
     font-size: 0.8125rem;
     line-height: 1rem;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
     &-title {
       margin: 0.5rem 0;
     }
@@ -66,14 +67,15 @@
     
     justify-content: space-between;
     padding: 0 2rem;
-    padding-top:2rem;
+    padding-top:2.5rem;
     height: 14rem;
-    &__logo img {
+    &__logo {
+      padding-top:0;
+      img {
       width: 8.0369rem;
       height: 1.75rem;
-      top: 2rem;
       left: 8.125rem;
-    }
+    }}
     &__nav {
       // font-size: 0.875rem;
       line-height: 1.375rem;
@@ -87,6 +89,8 @@
 }
 @include desktop {
   .header {
-    padding: 0 8rem;
+    padding-left:8rem;
+    padding-right: 8rem;
+   padding-top:3rem;
   }
 }

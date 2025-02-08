@@ -28,7 +28,7 @@ const WarehouseDetailsPage = () => {
 
   if (!warehouse) return <p>Loading...</p>;
   return (
-    <div>
+    <div className="warehouseDetails">
       <WarehouseDetails warehouse={warehouse} />
       <WarehouseInventoryList warehouseId={warehouseId} />
     </div>

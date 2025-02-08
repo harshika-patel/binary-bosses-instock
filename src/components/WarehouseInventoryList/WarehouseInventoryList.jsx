@@ -83,8 +83,9 @@ const WarehouseInventoryList = ({ warehouseId }) => {
           <div key={item.id} className="inventory-cards">
             <div className="inventory-cards__data">
               <div className="inventory-cards__info">
-                <hr className="inventory-cards__line" />
+               
                 <div className="inventory-cards__detail">
+                   
                   <div className="inventory-cards__detail-item">
                     <p className="inventory-cards__detail-item__title">
                       INVENTORY ITEM
