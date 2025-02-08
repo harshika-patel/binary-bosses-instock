@@ -1,31 +1,50 @@
 import "./WarehouseEdit.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
-const WarehouseEdit = () => {
+
+const WarehouseEdit = ({ warehouseData }) => {
   const { warehouseId } = useParams();
   const navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_API_URL;
 
   const [formData, setFormData] = useState({
-    warehouse_name: "Washington",
-    address: "33 Pearl Street W",
-    city: "Washington",
-    country: "USA",
-    contact_name: "Graeme Lyon",
-    contact_position: "Warehouse Manager",
-    contact_phone: "+1 (647) 504-0911",
-    contact_email: "glyon@instock.com",
+    warehouse_name: "",
+    address: "",
+    city: "",
+    country: "",
+    contact_name: "",
+    contact_position: "",
+    contact_phone: "",
+    contact_email: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  useEffect(() => {
+    if (warehouseData) {
+      setFormData((prevData) => ({
+        ...prevData,
+        warehouse_name: warehouseData.warehouse_name || "",
+        address: warehouseData.address || "",
+        city: warehouseData.city || "",
+        country: warehouseData.country || "",
+        contact_name: warehouseData.contact_name || "",
+        contact_position: warehouseData.contact_position || "",
+        contact_phone: warehouseData.contact_phone || "",
+        contact_email: warehouseData.contact_email || "",
+      }));
+    }
+  }, [warehouseData]);
+
+  //handle for input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  //handle submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -36,7 +55,7 @@ const WarehouseEdit = () => {
         headers: { "Content-Type": "application/json" },
       });
       setMessage("Warehouse updated successfully!");
-      navigate(`/warehouse-details/${warehouseId}`);
+      navigate("/"); //redirect to warehouse list;
     } catch (error) {
       const errorMsg =
         error.response?.data?.message || "Error updating warehouse.";
@@ -162,7 +181,7 @@ const WarehouseEdit = () => {
           </div>
         </article>
         <div className="buttons">
-          <Link to={`/warehouse-details/${warehouseId}`}>
+          <Link to={"/"}>
             <button type="button" className="cancel">
               Cancel
             </button>
