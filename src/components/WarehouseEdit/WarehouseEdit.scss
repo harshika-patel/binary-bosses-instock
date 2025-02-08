@@ -101,7 +101,9 @@
     display: flex;
     justify-content: space-between;
     background-color: $Light-Grey;
-    width: fit-content;
+    padding: 1rem 0.5rem 1.3rem 0.5rem;
+    margin-bottom: -1rem;
+    width: 100%;
 
     .cancel {
       background: $White;
@@ -152,6 +154,7 @@
                 margin-right:16px;
             }
           }
+          
     }
     .section{
         width:100%;
@@ -169,3 +172,18 @@
     }
 
 }
+
+.save {
+  background-color: $Instock-Indigo;
+  padding: 1rem;
+      border: solid 0.0625rem $Cloud;
+      padding: 0.5rem 2.75rem;
+      border-radius: 1.25rem;
+      cursor: pointer;
+      color: $White;
+      margin-left: 1rem;
+      &:hover {
+        border: solid 0.0625rem $Instock-Indigo;
+        color: $Instock-Indigo;
+      }
+    }
