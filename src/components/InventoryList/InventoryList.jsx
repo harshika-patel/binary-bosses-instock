@@ -31,6 +31,7 @@ const InventoryList = () => {
           status={inventory.status}
           quantity={inventory.quantity}
           warehouse_id={inventory.warehouse_id}
+          refreshList={fetchInventories}
         />
       ))}
     </section>
