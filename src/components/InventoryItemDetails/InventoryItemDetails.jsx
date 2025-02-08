@@ -72,7 +72,13 @@ const InventoryItemDetails = ({ inventory }) => {
           <div className="status-and-quantity">
             <div>
               <p className="details__labels">STATUS:</p>
-              <p>{inventory.status}</p>
+              <p
+              className={`status ${
+                inventory.status === "In Stock" ? "in-stock" : "out-of-stock"
+              }`}
+            >
+              {inventory.status}
+            </p>
             </div>
             <div>
               <p className="details__labels">QUANTITY:</p>

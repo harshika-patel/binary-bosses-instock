@@ -28,6 +28,8 @@
     
     &__left{
         display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &__right{
@@ -135,6 +137,11 @@
             font-size: .875rem;
             line-height: 1.375rem;
         }
+    }
+
+    &__labels, &__outputs{
+        display: inline-flex;
+        align-items: baseline;
     }
 
     &__address-section{
