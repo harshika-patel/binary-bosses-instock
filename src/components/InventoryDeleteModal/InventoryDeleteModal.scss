@@ -17,34 +17,45 @@
     z-index: 1000;
     @include tablet {
         background-color: rgba(0, 0, 0, 0.5);
+        align-items: center;  
     }
   }
   
   .modal {
     position: relative;
     width: 100vw;
-    max-width: 400px;
+    max-width: 767px;
     height: 100vh;
     background-color: white;
     padding: 16px;
     flex-direction: column; 
     @include tablet {
         max-width: 42rem;
-        max-height: 16.375rem; // Ask Matt 
-        margin-top: 11.5625rem;
+        margin-top: 0;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
         border-radius: 3px;
         padding: 24px;
         display: flex;
         justify-content: space-between;
     }
+    &__container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 16px; 
+      @include tablet {
+        padding: 24px;
+      }
+    }
     &__content {
       display: flex;
       flex-direction: column;
       margin-top: 60px; 
       text-align: left; 
+      padding: 16px;
+      margin-bottom: 20px; 
       @include tablet {
-        margin-top: 24px;
+        margin-top: 16px;
         padding-left: 16px;
         padding-right: 16px;  
         margin-left: auto; 
@@ -60,17 +71,21 @@
       margin-bottom: 24px;
       @include tablet {
         margin-bottom: 16px;
+        font-size: 32px;
+        line-height: 40px;
       }
     }
     &__text {
       font-family: "Titillium Web", sans-serif;
       font-size: 15px;
+      line-height: 26px;
       color: $Instock-Black;
       font-weight: 400;
       margin-bottom: 16px;
-      line-height: 26px;
       @include tablet {
         margin-bottom: 16px;
+        font-size: 16px;
+        line-height: 28px;
       }
     }
     &__actions {
@@ -82,11 +97,14 @@
       justify-content: space-between;
       gap: 10px;
       padding: 16px;
+      margin-top: auto;
+      margin-bottom: 16px;
       @include tablet {
         right: 16px;
         bottom: 16px;
         width: auto;
         justify-content: flex-end;
+        margin-bottom: 0;
       }
     }
     &__button {
@@ -122,7 +140,7 @@
             &:hover {
               border-color: $Instock-Indigo; 
               color: $Instock-Indigo; 
-              text-decoration: underline;
+              text-decoration: none;
             }
           }
         }
@@ -135,7 +153,7 @@
           @include tablet {
             &:hover {
               background-color: $Graphite;
-              text-decoration: underline;
+              text-decoration: none;
             }
           }
         }
