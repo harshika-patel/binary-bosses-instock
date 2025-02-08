@@ -16,9 +16,9 @@ const InventoryCard = ({
   status,
   quantity,
   warehouse_id,
-  refreshList,
+  refreshList = () => {},
 }) => {
-  const [warehouseName, setWarehouseName] = useState("Loading...");
+  const [warehouseName, setWarehouseName] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   // Fetch warehouse name using warehouse_id
@@ -52,7 +52,7 @@ const InventoryCard = ({
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${API_URL}/inventory/${selectedItem.inventory_id}`);
+      await axios.delete(`${API_URL}/inventories/${selectedItem.inventory_id}`);
       console.log(`Item ${selectedItem.item_name} deleted successfully`);
       closeDeleteModal();
       refreshList();
@@ -113,8 +113,12 @@ const InventoryCard = ({
       </div>
 
       <div className="inventory-card__actions">
-      <button className="inventory-card__button" onClick={openDeleteModal}>
-          <img className="inventory-card__icon" src={deleteIcon} alt="delete-icon" />
+        <button className="inventory-card__button" onClick={openDeleteModal}>
+          <img
+            className="inventory-card__icon"
+            src={deleteIcon}
+            alt="delete-icon"
+          />
         </button>
         <Link to={`/inventory/${inventory_id}/edit`}>
           <img

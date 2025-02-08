@@ -1,9 +1,16 @@
 import "./WarehouseDetails.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import arrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import editWhiteFill from "../../assets/Icons/edit-white-24px.svg";
 
 const WarehouseDetails = ({ warehouse }) => {
+  const navigate = useNavigate();
+  const { warehouseId } = useParams();
+
+  // Navigate to the edit page
+  const handleEditClick = () => {
+    navigate(`/warehouses/${warehouseId}/edit`);
+  };
 
   return (
     <section className="component-cards">
@@ -14,7 +21,7 @@ const WarehouseDetails = ({ warehouse }) => {
           </Link>
           <h2 className="title-wrapper__h2">{warehouse.warehouse_name}</h2>
         </div>
-        <button className="title-wrapper__right">
+        <button className="title-wrapper__right" onClick={handleEditClick}>
           <img src={editWhiteFill} alt="edit" />
           <span className="title-wrapper__edit-text">Edit</span>
         </button>

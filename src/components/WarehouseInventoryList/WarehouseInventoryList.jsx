@@ -3,9 +3,9 @@ import axios from "axios";
 import edit from "../../assets/Icons/edit-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import right from "../../assets/Icons/chevron_right-24px.svg";
-import InventoryDeleteModal from "../InventoryDeleteModel/InventoryDeleteModel";
+import InventoryDeleteModal from "../InventoryDeleteModal/InventoryDeleteModal";
 import dropdown from "../../assets/Icons/sort-24px.svg";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useParams, Link } from "react-router-dom";
 
@@ -19,51 +19,25 @@ const WarehouseInventoryList = ({ warehouseId }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedInventory, setSelectedInventory] = useState(null);
 
-  // Open the modal with the selected inventory to delete
-  const openDeleteModal = (inventory) => {
-    setSelectedInventory(inventory);
-    setIsModalOpen(true);
-  };
+  // Fetch warehouse and inventory list
+  const fetchInventoryData = async () => {
+    try {
+      const warehouseResponse = await axios.get(
+        `${API_URL}/warehouses/${warehouseId}`
+      );
+      setWarehouse(warehouseResponse.data);
 
-  // Close the modal
-  const closeDeleteModal = () => {
-    setIsModalOpen(false);
-    setSelectedInventory(null);
-  };
-
-  // Handle the deletion of the selected inventory
-  const handleDelete = () => {
-    if (selectedInventory) {
-      fetch(
-        `${API_URL}/warehouses/${warehouseId}/inventories/${selectedInventory.id}`,
-        {
-          method: "DELETE",
-        }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Inventory deleted:", data);
-          // Optionally, you can also update your state here to reflect the changes
-          closeDeleteModal();
-        })
-        .catch((error) => console.error("Error deleting inventory:", error));
+      const inventoryResponse = await axios.get(
+        `${API_URL}/warehouses/${warehouseId}/inventories`
+      );
+      setInventory(inventoryResponse.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   };
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const warehouseResponse = await axios.get(`${API_URL}/warehouses`);
-        setWarehouse(warehouseResponse.data);
 
-        const inventoryResponse = await axios.get(
-          `${API_URL}/warehouses/${warehouseId}/inventories`
-        );
-        setInventory(inventoryResponse.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
+  useEffect(() => {
+    fetchInventoryData();
   }, [warehouseId]);
 
   useEffect(() => {
@@ -76,6 +50,30 @@ const WarehouseInventoryList = ({ warehouseId }) => {
   }, []);
 
   if (!warehouse) return <p>Loading...</p>;
+
+  const openDeleteModal = (item) => {
+    setSelectedInventory(item);
+    setIsModalOpen(true);
+  };
+
+  const closeDeleteModal = () => {
+    setIsModalOpen(false);
+    setSelectedInventory(null);
+  };
+
+  const handleDelete = async () => {
+    if (!selectedInventory) return;
+
+    try {
+      await axios.delete(`${API_URL}/inventories/${selectedInventory.id}`);
+      console.log(`Item ${selectedInventory.item_name} deleted successfully`);
+
+      closeDeleteModal();
+      fetchInventoryData();
+    } catch (error) {
+      console.error("Error deleting inventory item", error);
+    }
+  };
 
   return (
     <div className="warehouse-container">
@@ -90,9 +88,9 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                       INVENTORY ITEM
                     </p>
                     <p className="inventory-cards__detail-item__data">
-                      <a href={`/inventory/${item.id}`}>
+                      <Link to={`/inventory/${item.id}`}>
                         {item.item_name} <img src={right} alt="more detail" />
-                      </a>
+                      </Link>
                     </p>
                   </div>
                   <div className="inventory-cards__detail-item">
@@ -101,7 +99,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                     </p>
                     <p
                       className={`inventory-cards__status ${
-                        item.status == "In Stock" ? "in-stock" : "out-of-stock"
+                        item.status === "In Stock" ? "in-stock" : "out-of-stock"
                       }`}
                     >
                       {item.status}
@@ -111,7 +109,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                 <div className="inventory-cards__detail">
                   <div className="inventory-cards__detail-item">
                     <p className="inventory-cards__detail-item__title">
-                      CATEGORY{" "}
+                      CATEGORY
                     </p>
                     <p className="inventory-cards__detail-item__data">
                       {item.category}
@@ -128,7 +126,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
               <div className="inventory-cards__actions">
                 <button
                   className="inventory-cards__button"
-                  onClick={() => openDeleteModal(inventory)}
+                  onClick={() => openDeleteModal(item)}
                 >
                   <img
                     src={deleteIcon}
@@ -149,7 +147,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                   isOpen={isModalOpen}
                   onClose={closeDeleteModal}
                   onConfirm={handleDelete}
-                  inventoryName={selectedInventory.name}
+                  inventoryName={selectedInventory.item_name}
                 />
               )}
             </div>
@@ -181,24 +179,24 @@ const WarehouseInventoryList = ({ warehouseId }) => {
               {inventory.map((item) => (
                 <tr key={item.id} className="warehouse-inventory-table__row">
                   <td className="warehouse-inventory-table__row-data">
-                    <a
+                    <Link
                       className="warehouse-inventory-table__row-data__link"
-                      href={`/inventory/${item.id}`}
+                      to={`/inventory/${item.id}`}
                     >
                       {item.item_name}
                       <img
                         className="warehouse-inventory-table__row-data__icon"
                         src={right}
                         alt="get more detail arrow"
-                      ></img>
-                    </a>
+                      />
+                    </Link>
                   </td>
                   <td className="warehouse-inventory-table__row-data">
                     {item.category}
                   </td>
                   <td
                     className={
-                      item.status == "In Stock" ? "in-stock" : "out-of-stock"
+                      item.status === "In Stock" ? "in-stock" : "out-of-stock"
                     }
                   >
                     {item.status}
@@ -209,7 +207,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                   <td className="warehouse-inventory-table__row-data">
                     <button
                       className="inventory-cards__button"
-                      onClick={() => openDeleteModal(inventory)}
+                      onClick={() => openDeleteModal(item)}
                     >
                       <img
                         src={deleteIcon}
@@ -229,7 +227,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
                         isOpen={isModalOpen}
                         onClose={closeDeleteModal}
                         onConfirm={handleDelete}
-                        inventoryName={selectedInventory.name}
+                        inventoryName={selectedInventory?.item_name}
                       />
                     )}
                   </td>
@@ -242,4 +240,5 @@ const WarehouseInventoryList = ({ warehouseId }) => {
     </div>
   );
 };
+
 export default WarehouseInventoryList;
