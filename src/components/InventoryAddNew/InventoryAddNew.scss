@@ -1,128 +1,163 @@
 @use "../../styles/_partials/fonts" as *;
 @use "../../styles/_partials/globals" as *;
-@use "../../styles/_partials/mixins" as *;
 @use "../../styles/_partials/variables" as *;
+@use "../../styles/_partials/mixins" as *;
 
-.component-card{
+.inventory-form {
+  display: flex;
+  flex-direction: column;
+  margin: 11px;
+  background: $White;
+  padding: 10px;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: -9vh;
+  border-radius: 3px;
+  
+  &__header {
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+    width: 100%;
     position: relative;
-    z-index: 5;
-}
 
-.title-wrapper{
+    &-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      margin: 6px;
+
+      img {
+        width: 24px;
+      }
+    }
+  }
+
+  hr {
+    border: none;
+    border: 1px solid $Cloud;
+    margin: 8px 0;
+  }
+
+  h1 {
+    margin: 5px 0;
+    line-height: 36px;
+    font-weight: 600;
+    font-size: 25px;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  h3 {
+    font-size: 13px;
+    line-height: 10px;
+  }
+
+  .section {
+    margin-bottom: 20px;
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 90%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 14px;
+
+      &.error {
+        border-color: $Red;
+      }
+
+      &:focus {
+        border-color: $Instock-Indigo;
+      }
+    }
+
+    .error-message {
+      color: $Red;
+      font-size: 13px;
+      margin-top: -8px;
+    }
+  }
+
+  .buttons {
     display: flex;
     justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
 
-    &__left{
-        display: flex;
+    .cancel {
+      background: $White;
+      border: solid 1px $Cloud;
+      padding: 8px 40px;
+      border-radius: 20px;
+      cursor: pointer;
+      color: $Slate;
+      &:hover {
+        border: solid 1px $Instock-Indigo;
+        color: $Instock-Indigo;
+      }
     }
 
-    &__right{
-        background-color: $Instock-Indigo;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 1.25rem;
-        width: 2.25rem;
-        height: 2.25rem;
-        margin-top: 1.5rem;
-        top: 10.5rem;
-        bottom: 18.6875rem;
+    &__add-item {
+      background: $Instock-Indigo;
+      color: $White;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 20px;
+      &:hover {
+        background-color: $Instock-Black;
+      }
+    }
+  }
 
-        @include tablet {
-            width: 5.0625rem;
-            height: 2.375rem;
-            top: 7.75rem;
-            left: 38.9375rem;
-            border-radius: 1.25rem;
-            padding: .5rem 1rem;
-            gap: .625rem;
-            display: flex;
-            align-items: center;
-        }
+  @include tablet {
+    .form-section {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
-    &__arrow{
-        width: 1.5rem;
-        height: 1.5rem;
-        top: 11rem;
-        left: 2.5rem;
-        margin-top: 2rem;
+    margin: 0 28px;
 
-        @include tablet {
-            top: 8.3125rem;
-            left: 4rem;
-        }
-
-        @include desktop {
-            top: 2.5625rem;
-            left: 2.5rem;
-        }
+    .buttons {
+      justify-content: end;
+      background-color: $Light-Grey;
+      padding: 16px;
+      .cancel {
+        margin-right: 16px;
+      }
     }
 
-    &__h2{
-        font-weight: 600;
-        font-size: 1.75rem;
-        line-height: 2.25rem;
+    .section {
+      width: 100%;
+      margin: 0 24px;
 
-        @include tablet {
-            font-size: 2rem;
-            line-height: 2.5rem;
-        }
+      input,
+      select,
+      textarea {
+        width: 100%;
+      }
     }
-}
+  }
 
-.divider{
-    height: .0625rem;
-    color: $Cloud;
-}
-
-.details{
-    margin-left: 1rem;
-    margin-right: 1rem;
-
-    @include tablet {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &__right-data{
-        @include tablet {
-            border-left: 1px solid $Cloud;
-            padding-left: 1rem;
-        }
-    }
-
-    &__labels{
-        font-size: .6875rem;
-        line-height: 1rem;
-        color: $Slate;
-        font-weight: 600;
-
-        @include tablet {
-            font-size: .75rem;
-            line-height: 1.125rem;
-        }
-    }
-
-    &__outputs{
-        font-size: .8125rem;
-        font-weight: 400;
-        line-height: 1.25rem;
-        color: $Instock-Black;
-
-        @include tablet {
-            display: flex;
-            gap: 1.5rem;
-            font-size: .875rem;
-            line-height: 1.375rem;
-        }
-    }
-
-}
-
-.status-and-quantity{
-    display: flex;
-    justify-content: space-between;
+  @include desktop {
+    margin: 0 96px;
+  }
 }
