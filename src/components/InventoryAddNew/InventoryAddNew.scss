@@ -6,7 +6,7 @@
 .inventory-form {
   display: flex;
   flex-direction: column;
-  margin: 11px;
+  margin: 16px;
   background: $White;
   justify-content: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
   &__header {
     display: flex;
     flex-direction: row;
-    padding: 16px;
+    padding: 24px 16px;
     width: 100%;
     &-link {
       display: flex;
@@ -26,92 +26,139 @@
         width: 24px;
       }
     }
+    h1 {
+      margin: 5px 0;
+      font-size: 28px;
+      line-height: 36px;
+      font-weight: 600;
+      @include tablet {
+        font-size: 32px;
+        line-height: 40px;
+      }
+    }
   }
-
   hr {
     border: none;
     border: 1px solid $Cloud;
-    margin: 8px 0;
+    margin: 0;
     
   }
-
-  h1 {
-    margin: 5px 0;
-    line-height: 36px;
-    font-weight: 600;
-    font-size: 25px;
-  }
-  h2 {
-    margin-top: 1rem;
-    font-size: 20px;
-    line-height: 28px;
-    margin-bottom: 10px;
-  }
-  // h3 {
-  //   margin-top: 1rem;
-  //   font-size: 13px;
-  //   line-height: 10px;
-    
-  // }
-
   .section {
-    margin-top: 16px;
-    margin-bottom: 20px;
-    padding: 16px 8px 16px 8px;
+    margin-bottom: 16px !important;
+    padding: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    h2 {
+      margin-top: 1rem;
+      font-size: 20px;
+      line-height: 28px;
+      margin-bottom: 10px;
+      @include tablet {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
     label {
       display: block;
       margin-top: 16px;
-      font-size: 15px;
-      // margin-left: 8px;
+      font-size: 13px;
+      line-height: 20px;
+      margin-bottom: 8px;
+      @include tablet {
+        font-size: 14px;
+        line-height: 22px;
+      }
     }
-
+    textarea {
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      resize: none; 
+      min-height: 120px;
+    }
     textarea,
     select,
     input {
       width: 100%;
-      padding: 10px;
-      margin-top: 8px;
+      padding: 10px 16px;  
+      margin-top: 4px;
       margin-bottom: 8px;
+      height: 36px;  
       border: 1px solid #ccc;
       border-radius: 20px;
-      font-size: 14px;
+      font-size: 13px;
+      line-height: 20px;
+      color: $Slate !important; 
+      &::placeholder {
+        color: $Slate !important; 
+        opacity: 1; 
+      }
+      @include tablet {
+        font-size: 14px;
+        line-height: 22px;
+        height: 38px; 
+      }
       &.error {
         border-color: $Red;
       }
       &:focus {
         border-color: $Instock-Indigo;
+        outline: none;
+      }
+    }
+    select {
+      appearance: none; 
+      background-image: url('../../assets/Icons/arrow_drop_down-24px.svg');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 32px; 
+      @include tablet {
+        font-size: 14px;
+        line-height: 22px;
+        height: 38px; 
       }
     }
     .error-message {
+      display: flex;
+      align-items: center; 
+      gap: 8px; 
       color: $Red;
       font-size: 13px;
-      margin-top: -8px;
-      
+      line-height: 18px;
+      margin-top: 8px;
+      &::before {
+        content: url('../../assets/Icons/error-24px.svg'); 
+        display: inline-block;
+        width: 12px;
+        flex-shrink: 0;
+        margin-right: 4px; 
+        margin-top: 0px;
+        transform: scale(0.75); 
+      }
     }
-  }
-  .status-options {
-    display: flex;
-    gap: 24px;
-    label {
+    .status-options {
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      cursor: pointer;
-      color: $Instock-Black;
-      }
-      input[type="radio"] {
-        width: 16px;
-        height: 16px;
+      gap: 24px;
+      height: 20px;
+      label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
         cursor: pointer;
-        margin: 0; 
-        vertical-align: middle;
-        // appearance: none;
-        &:not(:checked) + span {
-          color: $Slate; 
+        color: $Instock-Black;
         }
-      }
+        input[type="radio"] {
+          width: 16px;
+          height: 16px;
+          cursor: pointer;
+          margin: 0; 
+          vertical-align: middle;
+          // appearance: none;
+          &:not(:checked) + text {
+            color: $Slate; 
+          }
+        }
+    }
   }
   .buttons {
     display: flex;
@@ -146,7 +193,7 @@
       font-weight: bold;
   
       &:hover {
-        background-color: $Instock-Black;
+        background-color: $Graphite;
       }
     }
   
@@ -177,9 +224,6 @@
           padding: 16px;
           .cancel {
             margin-right: 16px;
-          }
-          .save {
-            background-color: $Instock-Indigo;
           }
         }
     }
