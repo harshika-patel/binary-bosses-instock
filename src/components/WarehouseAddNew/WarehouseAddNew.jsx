@@ -121,7 +121,7 @@ const WarehouseAddNew = () => {
   return (
     <div className="warehouse-form">
       <div className="warehouse-form__header">
-        <Link to="/warehouse-details" className="warehouse-form__header-link">
+        <Link to="/" className="warehouse-form__header-link">
             <img src={backAerrow} alt="Back" className="back-arrow" />
         </Link>
         <h1>Add New Warehouse</h1>
@@ -236,7 +236,7 @@ const WarehouseAddNew = () => {
         </div>
         </div>
         <div className="buttons">
-        <Link to="/warehouse-details"><button type="button" className="cancel" onClick={handleCancel}>Cancel</button></Link>
+        <Link to="/"><button type="button" className="cancel" onClick={handleCancel}>Cancel</button></Link>
       <button type="submit" className="add-warehouse">+ Add Warehouse</button>
         </div>
       </form>

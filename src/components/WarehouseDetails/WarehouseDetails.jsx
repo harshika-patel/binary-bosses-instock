@@ -6,7 +6,7 @@ import editWhiteFill from "../../assets/Icons/edit-white-24px.svg";
 const WarehouseDetails = ({ warehouse }) => {
 
   return (
-    <section className="component-card">
+    <section className="component-cards">
       <div className="title-wrapper">
         <div className="title-wrapper__left">
           <Link to="/">
