@@ -31,18 +31,23 @@ const WarehouseDetails = ({ warehouse }) => {
       <div className="details">
         <div className="deails__address-section">
           <p className="details__labels">WAREHOUSE ADDRESS:</p>
+          <div></div>
           <p className="details__outputs">{warehouse.address}</p>
         </div>
         <hr className="details__divider"></hr>
         <div className="details__contact-section">
           <div>
             <p className="details__labels">CONTANCT NAME:</p>
+            <div></div>
             <p className="details__outputs">{warehouse.contact_name}</p>
+            <div></div>
             <p className="details__outputs">{warehouse.contact_position}</p>
           </div>
           <div>
             <p className="details__labels">CONTACT INFORMATION:</p>
+            <div></div>
             <p className="details__outputs">{warehouse.contact_phone}</p>
+            <div></div>
             <p className="details__outputs">{warehouse.contact_email}</p>
           </div>
         </div>
