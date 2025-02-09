@@ -62,14 +62,14 @@
     @include tablet {
       flex-direction: row;
       align-items: center;
-      gap: 1rem;
+      gap: 0;
       flex: 1;
     }
 
     @include desktop {
       flex-direction: row;
       align-items: center;
-      gap: 1rem;
+      gap: 0;
       flex: 1;
     }
   }
@@ -179,4 +179,21 @@
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.in-stock,
+.out-of-stock {
+  background: rgba($Green, 0.2);
+  color: $Green;
+  font-weight: 600;
+  font-size: 0.75rem;
+  border-radius: 0.3125rem;
+  padding: 0.1875rem 0.5rem;
+  margin: 1.2rem 0;
+  display: inline-block;
+}
+
+.out-of-stock {
+  background: rgba($Red, 0.2);
+  color: $Red;
 }

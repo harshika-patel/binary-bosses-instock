@@ -129,7 +129,7 @@ const InventoryAddNew = () => {
           <div className="section">
             <h2>Item Details</h2>
 
-            <label>Item Name</label>
+            <label><h3>Item Name</h3></label>
             <input
               type="text"
               name="item_name"
@@ -141,7 +141,7 @@ const InventoryAddNew = () => {
               <span className="error-message">{errors.item_name}</span>
             )}
 
-            <label>Description</label>
+          <label><h3>Description</h3></label>
             <textarea
               className="description"
               name="description"
@@ -153,7 +153,7 @@ const InventoryAddNew = () => {
               <span className="error-message">{errors.description}</span>
             )}
 
-            <label>Category</label>
+          <label><h3>Category</h3></label>
             <select
               name="category"
               value={formData.category}
@@ -175,7 +175,7 @@ const InventoryAddNew = () => {
           <div className="section">
             <h2>Item Availability</h2>
 
-            <label>Status</label>
+            <label><h3>Status</h3></label>
             <div className="status-options">
               <label>
                 <input
@@ -185,7 +185,7 @@ const InventoryAddNew = () => {
                   checked={formData.status === "In Stock"}
                   onChange={handleChange}
                 />
-                <span> In Stock</span>
+                <text> In Stock</text>
               </label>
               <label>
                 <input
@@ -195,13 +195,13 @@ const InventoryAddNew = () => {
                   checked={formData.status === "Out of Stock"}
                   onChange={handleChange}
                 />
-                <span>Out of Stock</span>
+                <text>Out of Stock</text>
               </label>
             </div>
 
             {formData.status === "In Stock" && (
               <div className="quantity-field">
-                <label>Quantity:</label>
+                <label><h3>Quantity</h3></label>
                 <input
                   type="number"
                   name="quantity"
@@ -217,7 +217,7 @@ const InventoryAddNew = () => {
               </div>
             )}
 
-            <label>Warehouse</label>
+            <label><h3>Warehouse</h3></label>
             <select
               name="warehouse_id"
               value={formData.warehouse_id}
