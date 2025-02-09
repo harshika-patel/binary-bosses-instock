@@ -1,0 +1,203 @@
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/globals" as *;
+@use "../../styles/_partials/variables" as *;
+@use "../../styles/_partials/mixins" as *;
+
+
+
+
+.warehouse-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0.6875rem;
+  background: $White;
+  padding: 0.625rem;
+  justify-content: center;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 5;
+  top: -2vh;
+  border-radius: 0.1875rem;
+  padding: 1rem 1rem;
+  // margin-top: 3rem;
+ 
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+   padding:0.5rem 0;
+    width: 100%;
+    &-link {
+      display: flex;
+      flex-direction: row;
+      margin-right: 0.375rem;
+      img {
+        width: 1.5rem;
+      }
+    }
+  }
+  hr {
+    border: none;
+    border: 0.0625rem solid $Cloud;
+    margin: 0.5rem 0;
+  }
+  h1 {
+    margin: 0.3125rem 0;
+    line-height: 2.25rem;
+    font-weight: 600;
+    font-size: 1.5625rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding-top: 0.5rem;
+    // padding-bottom: 2rem;
+  }
+  h3 {
+    font-size: 0.8125rem;
+    line-height: 0.625rem;
+    padding-top: 2rem;
+  }
+
+  .section {
+   
+    margin-bottom: 1.25rem;
+    padding: 0 1rem;
+
+    h3 {
+      margin-bottom: 0.625rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input {
+      width: 90%;
+      padding: 0.5rem;
+      margin-top: 0.3125rem;
+      border: 0.0625rem solid #ccc;
+      border-radius: 1.25rem;
+      font-size: 0.875rem;
+
+      &.error {
+        border-color: $Red; // Red border for error state
+      }
+
+      &:focus {
+        border-color: $Instock-Indigo;
+      }
+    }
+
+    .error-message {
+      color: $Red;
+      font-size: 0.8125rem;
+      margin-top: -0.5rem;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    background-color: $Light-Grey;
+    padding: 1rem 0.82rem 0.9rem 0.82rem;
+    margin-bottom: -0.7rem;
+    width: 107.5%;
+    position: relative;
+    z-index: 10;
+    margin-left: -0.67rem;
+    gap: 0.2rem;
+    // s
+
+
+
+    .cancel {
+      background: $White;
+      border: solid 0.0625rem $Cloud;
+      padding: 0.5rem 2.5rem;
+      border-radius: 1.25rem;
+      cursor: pointer;
+      color: $Slate;
+      &:hover {
+        border: solid 1px $Instock-Indigo;
+        color: $Instock-Indigo;
+      }
+      .save {
+        background-color: $Instock-Indigo;
+        &:hover {
+          border: solid 1px $Instock-Indigo;
+          color: $White;
+        }
+        &:focus {
+          color: $White;
+        }
+      }
+    }
+
+    .edit-warehouse {
+      background: $Instock-Indigo;
+      color: $White;
+      border: none;
+     padding: 0.5rem 2.5rem;
+      border-radius: 1.25rem;
+      cursor: pointer;
+      font-size: 0.8125rem;
+      font-weight: 1.25rem;
+      &:hover {
+        background-color: $Instock-Black;
+      }
+    }
+  }
+}
+@include tablet{
+    .form-section{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        
+    }
+    .warehouse-form {
+        margin:0 1.75rem;
+        .buttons{
+            justify-content: end;
+            background-color: $Light-Grey;
+            padding:1rem;
+            .cancel {
+                margin-right:1rem;
+            }
+          }
+          
+    }
+    .section{
+        width:100%;
+        margin:0 1.5rem;
+        input{
+            width:100%;
+        }
+    }
+   
+}
+@include desktop{
+  
+    .warehouse-form {
+        margin:0 6rem;
+    }
+
+}
+
+.save {
+  background-color: $Instock-Indigo;
+  padding: 1rem;
+      border: solid 0.0625rem $Cloud;
+      padding: 0.5rem 2.75rem;
+      border-radius: 1.25rem;
+      cursor: pointer;
+      color: $White;
+      margin-left: 1rem;
+      &:hover {
+        border: solid 0.0625rem $Instock-Indigo;
+        color: $Instock-Indigo;
+      }
+    }

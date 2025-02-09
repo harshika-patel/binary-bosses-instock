@@ -1,0 +1,8 @@
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/globals" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
+
+.container{
+    box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+}
