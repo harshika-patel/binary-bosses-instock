@@ -76,7 +76,7 @@ const WarehouseInventoryList = ({ warehouseId }) => {
   };
 
   return (
-    <div className="warehouse-container">
+    <div className="warehouse-containers">
       {isMobile ? (
         inventory.map((item) => (
           <div key={item.id} className="inventory-cards">
