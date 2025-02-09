@@ -6,28 +6,28 @@
 .inventory-form {
   display: flex;
   flex-direction: column;
-  margin: 0.6875rem;
+  margin: 1rem;
   background: $White;
   justify-content: center;
-  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
   top: -2.5vh;
-  border-radius: 0.1875rem;
+  border-radius: 3px;
   &__header {
     display: flex;
     flex-direction: row;
-    padding: 1rem;
-    width: 100%;
+    padding: 1.5rem 1rem;
+    width: 100vw;
     &-link {
       display: flex;
       flex-direction: row;
       margin-right: 0.5rem;
       img {
-        width: 1.5rem;
+        width: 24px;
       }
     }
     h1 {
-      margin: .3125rem 0;
+      margin: 0.3125rem 0;
       font-size: 1.75rem;
       line-height: 2.25rem;
       font-weight: 600;
@@ -39,43 +39,65 @@
   }
   hr {
     border: none;
-    border: 0.0625rem solid $Cloud;
-    margin: 0.5rem 0;
+    border: 1px solid $Cloud;
+    margin: 0;
   }
-
-  h1 {
-    margin: 0.3125rem 0;
-    line-height: 2.25rem;
-    font-weight: 600;
-    font-size: 1.37rem;
-    width: 100%;
-  }
-  h2 {
-    margin-top: 16px;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    margin-bottom: 0.625rem;
-  }
-
   .section {
-    margin-top: 1rem;
-    margin-bottom: 1.25rem;
-    padding: 1rem 0.5rem 1rem 0.5rem;
+    margin-bottom: 1rem !important;
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    @include tablet {
+      max-width: 50%;
+    }
+    h2 {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      margin-bottom: 0.625rem;
+      @include tablet {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+    }
     label {
       display: block;
       margin-top: 1rem;
-      font-size: 0.9375rem;
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      margin-bottom: 0.5rem;
+      @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+      }
+    }
+    textarea {
+      resize: none;
+      min-height: 120px;
     }
     textarea,
     select,
     input {
       width: 100%;
-      padding: 0.625rem;
-      margin-top: 0.5rem;
+      padding: 0.625rem 1rem;
+      margin-top: 0.25rem;
       margin-bottom: 0.5rem;
-      border: 0.0625rem solid #ccc;
+      height: 36px;
+      border: 1px solid #ccc;
       border-radius: 1.25rem;
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      color: $Slate !important;
+      &::placeholder {
+        color: $Slate !important;
+        opacity: 1;
+      }
+      @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        height: 38px;
+        max-width: 40vw;
+      }
       &.error {
         border-color: $Red;
       }
@@ -85,81 +107,81 @@
       }
     }
     select {
-      appearance: none; 
-      background-image: url('../../assets/Icons/arrow_drop_down-24px.svg');
+      appearance: none;
+      background-image: url("../../assets/Icons/arrow_drop_down-24px.svg");
       background-repeat: no-repeat;
-      background-position: right .625rem center;
-      padding-right: 2rem; 
-          @include tablet {
-        font-size: .875rem;
+      background-position: right 0.625rem center;
+      padding-right: 2rem;
+      @include tablet {
+        font-size: 0.875rem;
         line-height: 1.375rem;
-        height: 38px; 
-      }
-      .description {
-        padding-bottom: 4rem;
-      }
-      .description {
-        padding-bottom: 4rem;
+        height: 38px;
       }
     }
     .error-message {
       display: flex;
-      align-items: center; 
-      gap: 8px; 
+      align-items: center;
+      gap: 8px;
       color: $Red;
       font-size: 0.8125rem;
-      margin-top: -0.5rem;
+      line-height: 1.125rem;
+      margin-top: 0.5rem;
+      &::before {
+        content: url("../../assets/Icons/error-24px.svg");
+        display: inline-block;
+        width: 12px;
+        flex-shrink: 0;
+        margin-right: 0.25rem;
+        margin-top: 0rem;
+        transform: scale(0.75);
+      }
     }
-  }
-  .status-options {
-    display: flex;
-    gap: 1.5rem;
-    label {
+    .status-options {
       display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.875rem;
-      cursor: pointer;
-      color: $Instock-Black;
-    }
-    input[type="radio"] {
-      width: 1rem;
-      height: 1rem;
-      cursor: pointer;
-      margin: 0;
-      vertical-align: middle;
-      &:not(:checked) + span {
-        color: $Slate;
+      gap: 1.5rem;
+      height: 20px;
+      label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.875rem;
+        cursor: pointer;
+        color: $Instock-Black;
+      }
+      input[type="radio"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        margin: 0;
+        vertical-align: middle;
+        // appearance: none;
+        &:not(:checked) + text {
+          color: $Slate;
+        }
       }
     }
   }
   .buttons {
     display: flex;
     flex-direction: row;
+    gap: 12px;
+    width: 100%;
     background-color: $Light-Grey;
-    padding: 1.1rem 0.82rem 1.1rem 0.82rem;
-    width: 112%;
-    position: relative;
-    z-index: 10;
-    margin-left: -1rem;
-    gap: 0.6rem;
-
+    padding: 16px;
     .cancel,
     .add-item {
-      width: 50%;
-      padding: 0.42rem 2rem;
-      border-radius: 1.25rem;
+      width: 50vw;
+      padding: 0.5rem 2.5rem;
+      border-radius: 20px;
       cursor: pointer;
       font-size: 0.8125rem;
     }
     .cancel {
       background: $White;
-      border: 0.0625rem solid $Cloud;
+      border: 1px solid $Cloud;
       color: $Slate;
-      &:focus {
-      outline: none;
-      }
+
       &:hover {
         border-color: $Instock-Indigo;
         color: $Instock-Indigo;
@@ -180,7 +202,7 @@
     @include tablet {
       flex-direction: row;
       justify-content: flex-end;
-      gap: 1rem;
+      gap: 16px;
       width: auto;
 
       .cancel,
@@ -202,20 +224,17 @@
         justify-content: end;
         background-color: $Light-Grey;
         padding: 1rem;
-        width: 103%;
         .cancel {
           margin-right: 1rem;
-        }
-        .save {
-          background-color: $Instock-Indigo;
         }
       }
     }
 
     .section {
-      width: 100%;
+      width: 100vw;
       margin: 0 1.5rem;
-
+      // textarea,
+      // select,
       input {
         width: 100vw;
       }
@@ -228,5 +247,3 @@
     }
   }
 }
-
-
