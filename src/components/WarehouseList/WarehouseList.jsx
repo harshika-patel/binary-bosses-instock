@@ -6,20 +6,19 @@ import "./WarehouseList.scss";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const WarehouseList = () => {
-    const [warehouses, setWarehouses] = useState([]);
+  const [warehouses, setWarehouses] = useState([]);
 
-
-    const fetchWarehouses = async () => {
-        try {
-            const response = await axios.get(`${API_URL}/warehouses`);
-            setWarehouses(response.data);
-        } catch (err) {
-            console.error("Error fetching warehoue:", err);
-        }
-    };
-    useEffect(() => {
+  const fetchWarehouses = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/warehouses`);
+      setWarehouses(response.data);
+    } catch (err) {
+      console.error("Error fetching warehoue:", err);
+    }
+  };
+  useEffect(() => {
     fetchWarehouses();
-    }, []);
+  }, []);
 
   return (
     <section className="warehouse-list">
@@ -39,7 +38,6 @@ const WarehouseList = () => {
       ))}
     </section>
   );
-}
-
+};
 
 export default WarehouseList;

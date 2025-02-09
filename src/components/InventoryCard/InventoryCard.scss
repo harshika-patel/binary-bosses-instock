@@ -6,7 +6,7 @@
 .inventory-card {
   padding: 1.5rem;
   background-color: $White;
-  border-top: 1px solid $Cloud;
+  border-top: 0.0625rem solid $Cloud;
   text-align: start;
   display: flex;
   flex-direction: column;
@@ -166,8 +166,8 @@
   }
 
   &__icon {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
   }
 

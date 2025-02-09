@@ -6,75 +6,67 @@
 .inventory-form {
   display: flex;
   flex-direction: column;
-  margin: 11px;
+  margin: 0.6875rem;
   background: $White;
   justify-content: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
   position: relative;
-  top:-2.5vh;
-  border-radius: 3px;
+  top: -2.5vh;
+  border-radius: 0.1875rem;
   &__header {
     display: flex;
     flex-direction: row;
-    padding: 16px;
+    padding: 1rem;
     width: 100%;
     &-link {
       display: flex;
       flex-direction: row;
-      margin-right: 8px;
+      margin-right: 0.5rem;
       img {
-        width: 24px;
+        width: 1.5rem;
       }
     }
   }
 
   hr {
     border: none;
-    border: 1px solid $Cloud;
-    margin: 8px 0;
-    
+    border: 0.0625rem solid $Cloud;
+    margin: 0.5rem 0;
   }
 
   h1 {
-    margin: 5px 0;
-    line-height: 36px;
+    margin: 0.3125rem 0;
+    line-height: 2.25rem;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
   h2 {
-    margin-top: 1rem;
-    font-size: 20px;
-    line-height: 28px;
-    margin-bottom: 10px;
+    margin-top: 16px;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-bottom: 0.625rem;
   }
-  // h3 {
-  //   margin-top: 1rem;
-  //   font-size: 13px;
-  //   line-height: 10px;
-    
-  // }
 
   .section {
-    margin-top: 16px;
-    margin-bottom: 20px;
-    padding: 16px 8px 16px 8px;
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
     label {
       display: block;
-      margin-top: 16px;
-      font-size: 15px;
-      // margin-left: 8px;
+      margin-top: 1rem;
+      font-size: 0.9375rem;
     }
 
     textarea,
     select,
     input {
       width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      margin-bottom: 8px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      font-size: 14px;
+      padding: 0.625rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      border: 0.0625rem solid #ccc;
+      border-radius: 1.25rem;
+      font-size: 0.875rem;
       &.error {
         border-color: $Red;
       }
@@ -84,53 +76,51 @@
     }
     .error-message {
       color: $Red;
-      font-size: 13px;
-      margin-top: -8px;
-      
+      font-size: 0.8125rem;
+      margin-top: -0.5rem;
     }
   }
   .status-options {
     display: flex;
-    gap: 24px;
+    gap: 1.5rem;
     label {
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 12px;
-      font-size: 14px;
+      gap: 0.75rem;
+      font-size: 0.875rem;
       cursor: pointer;
       color: $Instock-Black;
+    }
+    input[type="radio"] {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+      margin: 0;
+      vertical-align: middle;
+      &:not(:checked) + span {
+        color: $Slate;
       }
-      input[type="radio"] {
-        width: 16px;
-        height: 16px;
-        cursor: pointer;
-        margin: 0; 
-        vertical-align: middle;
-        // appearance: none;
-        &:not(:checked) + span {
-          color: $Slate; 
-        }
-      }
+    }
   }
   .buttons {
     display: flex;
     flex-direction: row;
-    gap: 12px;
+    gap: 0.75rem;
     width: 100%;
     background-color: $Light-Grey;
-    padding: 16px;
+    padding: 1rem;
     .cancel,
     .add-item {
       width: 50%;
-      padding: 8px 40px;
-      border-radius: 20px;
+      padding: 0.5rem 2.5rem;
+      border-radius: 1.25rem;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 0.8125rem;
     }
     .cancel {
       background: $White;
-      border: 1px solid $Cloud;
+      border: 0.0625rem solid $Cloud;
       color: $Slate;
 
       &:hover {
@@ -138,31 +128,31 @@
         color: $Instock-Indigo;
       }
     }
-  
+
     .add-item {
       background: $Instock-Indigo;
       color: $White;
       border: none;
       font-weight: bold;
-  
+
       &:hover {
         background-color: $Instock-Black;
       }
     }
-  
+
     @include tablet {
       flex-direction: row;
       justify-content: flex-end;
-      gap: 16px;
+      gap: 1rem;
       width: auto;
-  
+
       .cancel,
       .add-item {
         width: auto;
       }
     }
   }
-  
+
   @include tablet {
     .form-section {
       display: flex;
@@ -170,25 +160,24 @@
       justify-content: space-between;
     }
     .inventory-form {
-    margin: 0 28px;
-        .buttons {
-          justify-content: end;
-          background-color: $Light-Grey;
-          padding: 16px;
-          .cancel {
-            margin-right: 16px;
-          }
-          .save {
-            background-color: $Instock-Indigo;
-          }
+      margin: 0 1.75rem;
+      .buttons {
+        justify-content: end;
+        background-color: $Light-Grey;
+        padding: 1rem;
+        .cancel {
+          margin-right: 1rem;
         }
+        .save {
+          background-color: $Instock-Indigo;
+        }
+      }
     }
 
     .section {
       width: 100%;
-      margin: 0 24px;
-      // textarea,
-      // select,
+      margin: 0 1.5rem;
+
       input {
         width: 100%;
       }
@@ -197,7 +186,7 @@
 
   @include desktop {
     .inventory-form {
-      margin:0 96px;
+      margin: 0 6rem;
     }
   }
 }

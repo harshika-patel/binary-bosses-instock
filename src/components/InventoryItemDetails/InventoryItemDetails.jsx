@@ -6,6 +6,7 @@ import editWhiteFill from "../../assets/Icons/edit-white-24px.svg";
 // import axios from "axios";
 
 const InventoryItemDetails = ({ inventory }) => {
+  const { inventoryId } = useParams();
   //   const { inventoryId } = useParams(); // Fetch ID from URL params
   //   const [inventory, setInventory] = useState(null); // Changed to null initially
   //   const [loading, setLoading] = useState(true); // To handle loading state
@@ -48,10 +49,14 @@ const InventoryItemDetails = ({ inventory }) => {
           </Link>
           <h2 className="title-wrapper__h2">{inventory.warehouse_name}</h2>
         </div>
-        <button className="title-wrapper__right">
-          <img src={editWhiteFill} alt="edit" />
-          <span className="title-wrapper__edit-text">Edit</span>
-        </button>
+        <Link to={`/inventory/${inventoryId}/edit`}>
+        <div>
+          <button className="title-wrapper__right">
+            <img src={editWhiteFill} alt="edit" />
+            <span className="title-wrapper__edit-text">Edit</span>
+          </button>
+        </div>
+        </Link>
       </div>
 
       <hr className="divider"></hr>
@@ -72,7 +77,7 @@ const InventoryItemDetails = ({ inventory }) => {
           <div className="status-and-quantity">
             <div>
               <p className="details__labels">STATUS:</p>
-              <p>{inventory.status}</p>
+              <p className="inventory__status">{inventory.status}</p>
             </div>
             <div>
               <p className="details__labels">QUANTITY:</p>

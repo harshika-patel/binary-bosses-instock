@@ -15,7 +15,7 @@
   justify-content: center;
   z-index: 1000;
   @include tablet {
-      background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -27,32 +27,32 @@
   padding: 20px;
   // animation: fadeIn 0.3s ease-in-out;
   @include tablet {
-      max-width: 87.5%;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-      border-radius: 3px;
-      padding: 20px;
-      box-shadow: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    max-width: 87.5%;
+    box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.25);
+    border-radius: 0.1875rem;
+    padding: 1.25rem;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   @include desktop {
-      max-width: 52.5%;
+    max-width: 52.5%;
   }
   &__title {
     font-family: "Titillium Web", sans-serif;
-    font-size: 28px;
+    font-size: 1.75rem;
     color: $Instock-Black;
     font-weight: 600;
-    margin-bottom: 10px;
-    line-height: 36px;
+    margin-bottom: 0.625rem;
+    line-height: 2.25rem;
   }
   &__text {
-    font-size: 15px;
+    font-size: 0.9375rem;
     color: $Instock-Black;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     font-weight: 400;
-    line-height: 26px;
+    line-height: 1.625rem;
   }
   &__actions {
     display: flex;
@@ -65,22 +65,22 @@
   &__button {
     font-family: "Titillium Web", sans-serif;
     flex: 1;
-    padding: 10px;
+    padding: 0.625rem;
     border: none;
     border-radius: 1.25rem;
-    font-size: .8125rem;
+    font-size: 0.8125rem;
     font-weight: 600;
     cursor: pointer;
-      &--cancel {
-        background-color: white;
-        border: 0.5px solid $Cloud;
-        // border-radius: 20px;
-        color: $Slate;
-      }
-      &--confirm {
-        background-color: #C94515;
-        color: white;
-      }
+    &--cancel {
+      background-color: white;
+      border: 0.5px solid $Cloud;
+      // border-radius: 20px;
+      color: $Slate;
+    }
+    &--confirm {
+      background-color: #c94515;
+      color: white;
+    }
   }
 }
 
@@ -93,5 +93,3 @@
   background-color: #d32f2f;
   opacity: 0.8;
 }
-
-
