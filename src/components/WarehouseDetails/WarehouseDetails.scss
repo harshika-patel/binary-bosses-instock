@@ -29,7 +29,6 @@
     &__left{
         display: flex;
         align-items: center;
-        justify-content: center;
     }
 
     &__right{
@@ -93,6 +92,7 @@
         font-weight: 600;
         font-size: 1.75rem;
         line-height: 2.25rem;
+        margin-top: 1.5rem;
 
         @include tablet {
             font-size: 2rem;
@@ -136,12 +136,8 @@
             gap: 1.5rem;
             font-size: .875rem;
             line-height: 1.375rem;
+            margin-left: 1rem;
         }
-    }
-
-    &__labels, &__outputs{
-        display: inline-flex;
-        align-items: baseline;
     }
 
     &__address-section{

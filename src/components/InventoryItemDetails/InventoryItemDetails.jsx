@@ -46,7 +46,7 @@ const InventoryItemDetails = ({ inventory }) => {
           <Link to="/inventory">
             <img className="title-wrapper__arrow" src={arrowBack} alt="back" />
           </Link>
-          <h2 className="title-wrapper__h2">{inventory.warehouse_name}</h2>
+          <h2 className="title-wrapper__h2">{inventory.item_name}</h2>
         </div>
         <button className="title-wrapper__right">
           <img src={editWhiteFill} alt="edit" />
@@ -60,10 +60,12 @@ const InventoryItemDetails = ({ inventory }) => {
         <div className="details_left-data">
           <div>
             <p className="details__labels">ITEM DESCRIPTION:</p>
+            <div></div>
             <p className="details__outputs">{inventory.description}</p>
           </div>
           <div>
             <p className="details__labels">CATEGORY:</p>
+            <div></div>
             <p className="details__outputs">{inventory.category}</p>
           </div>
         </div>
@@ -72,6 +74,7 @@ const InventoryItemDetails = ({ inventory }) => {
           <div className="status-and-quantity">
             <div>
               <p className="details__labels">STATUS:</p>
+              <div></div>
               <p
               className={`status ${
                 inventory.status === "In Stock" ? "in-stock" : "out-of-stock"
@@ -82,11 +85,13 @@ const InventoryItemDetails = ({ inventory }) => {
             </div>
             <div>
               <p className="details__labels">QUANTITY:</p>
+              <div></div>
               <p className="details__outputs">{inventory.quantity}</p>
             </div>
           </div>
           <div>
             <p className="details__labels">WAREHOUSE:</p>
+            <div></div>
             <p className="details__outputs">{inventory.warehouse_name}</p>
           </div>
         </div>
