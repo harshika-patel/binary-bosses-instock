@@ -24,7 +24,7 @@ const InventoryDeleteModal = ({ isOpen, onClose, onConfirm, itemName }) => {
                     </p>
                 </div>
 
-                <div className="modal__actions">
+                <div className="modal__inventory-actions">
                     <button className="modal__button modal__button--secondary" onClick={onClose}>
                         Cancel
                     </button>

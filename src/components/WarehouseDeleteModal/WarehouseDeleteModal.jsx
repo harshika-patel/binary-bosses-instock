@@ -18,7 +18,7 @@ const WarehouseDeleteModal = ({ isOpen, onClose, onConfirm, warehouseName }) => 
                 <h2 className="modal__title">Delete {warehouseName} warehouse?</h2>
                 <p className="modal__text">Please confirm that you'd like to delete the {warehouseName} from the list of warehouses. You won't be able to undo this action.</p>
                 </div>
-                <div className="modal__actions">
+                <div className="modal__warehouse-actions">
                     <button className="modal__button modal__button--secondary" onClick={onClose}>
                         Cancel
                     </button>

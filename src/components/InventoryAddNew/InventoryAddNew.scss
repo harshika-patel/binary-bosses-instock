@@ -6,7 +6,7 @@
 .inventory-form {
   display: flex;
   flex-direction: column;
-  margin: 16px;
+  margin: 1rem;
   background: $White;
   justify-content: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -16,24 +16,24 @@
   &__header {
     display: flex;
     flex-direction: row;
-    padding: 24px 16px;
-    width: 100%;
+    padding: 1.5rem 1rem;
+    width: 100vw;
     &-link {
       display: flex;
       flex-direction: row;
-      margin-right: 8px;
+      margin-right: .5rem;
       img {
         width: 24px;
       }
     }
     h1 {
-      margin: 5px 0;
-      font-size: 28px;
-      line-height: 36px;
+      margin: .3125rem 0;
+      font-size: 1.75rem;
+      line-height: 2.25rem;
       font-weight: 600;
       @include tablet {
-        font-size: 32px;
-        line-height: 40px;
+        font-size: 2rem;
+        line-height: 2.5rem;
       }
     }
   }
@@ -44,29 +44,32 @@
     
   }
   .section {
-    margin-bottom: 16px !important;
-    padding: 16px;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-bottom: 1rem !important;
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    @include tablet {
+      max-width: 50%;
+    }
     h2 {
       margin-top: 1rem;
-      font-size: 20px;
-      line-height: 28px;
-      margin-bottom: 10px;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      margin-bottom: .625rem;
       @include tablet {
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 1.5rem;
+        line-height: 2rem;
       }
     }
     label {
       display: block;
-      margin-top: 16px;
-      font-size: 13px;
-      line-height: 20px;
-      margin-bottom: 8px;
+      margin-top: 1rem;
+      font-size: .8125rem;
+      line-height: 1.25rem;
+      margin-bottom: .5rem;
       @include tablet {
-        font-size: 14px;
-        line-height: 22px;
+        font-size: .875rem;
+        line-height: 1.375rem;
       }
     }
     textarea {
@@ -78,23 +81,24 @@
     select,
     input {
       width: 100%;
-      padding: 10px 16px;  
-      margin-top: 4px;
-      margin-bottom: 8px;
+      padding: .625rem 1rem;  
+      margin-top: .25rem;
+      margin-bottom: .5rem;
       height: 36px;  
       border: 1px solid #ccc;
-      border-radius: 20px;
-      font-size: 13px;
-      line-height: 20px;
+      border-radius: 1.25rem;
+      font-size: .8125rem;
+      line-height: 1.25rem;
       color: $Slate !important; 
       &::placeholder {
         color: $Slate !important; 
         opacity: 1; 
       }
       @include tablet {
-        font-size: 14px;
-        line-height: 22px;
+        font-size: .875rem;
+        line-height: 1.375rem;
         height: 38px; 
+        max-width: 40vw;
       }
       &.error {
         border-color: $Red;
@@ -108,11 +112,11 @@
       appearance: none; 
       background-image: url('../../assets/Icons/arrow_drop_down-24px.svg');
       background-repeat: no-repeat;
-      background-position: right 10px center;
-      padding-right: 32px; 
-      @include tablet {
-        font-size: 14px;
-        line-height: 22px;
+      background-position: right .625rem center;
+      padding-right: 2rem; 
+          @include tablet {
+        font-size: .875rem;
+        line-height: 1.375rem;
         height: 38px; 
       }
     }
@@ -121,29 +125,29 @@
       align-items: center; 
       gap: 8px; 
       color: $Red;
-      font-size: 13px;
-      line-height: 18px;
-      margin-top: 8px;
+      font-size: .8125rem;
+      line-height: 1.125rem;
+      margin-top: .5rem;
       &::before {
         content: url('../../assets/Icons/error-24px.svg'); 
         display: inline-block;
         width: 12px;
         flex-shrink: 0;
-        margin-right: 4px; 
-        margin-top: 0px;
+        margin-right: .25rem; 
+        margin-top: 0rem;
         transform: scale(0.75); 
       }
     }
     .status-options {
       display: flex;
-      gap: 24px;
+      gap: 1.5rem;
       height: 20px;
       label {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 8px;
-        font-size: 14px;
+        font-size: .875rem;
         cursor: pointer;
         color: $Instock-Black;
         }
@@ -169,11 +173,11 @@
     padding: 16px;
     .cancel,
     .add-item {
-      width: 50%;
-      padding: 8px 40px;
+      width: 50vw;
+      padding: .5rem 2.5rem;
       border-radius: 20px;
       cursor: pointer;
-      font-size: 13px;
+      font-size: .8125rem;
     }
     .cancel {
       background: $White;
@@ -217,31 +221,31 @@
       justify-content: space-between;
     }
     .inventory-form {
-    margin: 0 28px;
+    margin: 0 1.75rem;
         .buttons {
           justify-content: end;
           background-color: $Light-Grey;
-          padding: 16px;
+          padding: 1rem;
           .cancel {
-            margin-right: 16px;
+            margin-right: 1rem;
           }
         }
     }
 
     .section {
-      width: 100%;
-      margin: 0 24px;
+      width: 100vw;
+      margin: 0 1.5rem;
       // textarea,
       // select,
       input {
-        width: 100%;
+        width: 100vw;
       }
     }
   }
 
   @include desktop {
     .inventory-form {
-      margin:0 96px;
+      margin:0 6rem;
     }
   }
 }
