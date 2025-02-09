@@ -3,7 +3,7 @@
 @use "../../styles/_partials/variables" as *;
 @use "../../styles/_partials/mixins" as *;
 
-.warehouse-container{
+.warehouse-containers{
   position: relative;
   top:-2.5vh;
 }
@@ -121,7 +121,7 @@
 
 @include tablet {
   // Table Styles (Desktop)
-  .warehouse-container {
+  .warehouse-containers {
     padding:0 2rem;
   }
   .warehouse-inventory-table {
@@ -216,7 +216,7 @@
   }
 }
 @include desktop{
-    .warehouse-container {
+    .warehouse-containers {
         padding:0 7.5rem;
       }
 }
