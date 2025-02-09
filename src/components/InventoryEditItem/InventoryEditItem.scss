@@ -1,0 +1,378 @@
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/globals" as *;
+@use "../../styles/_partials/variables" as *;
+@use "../../styles/_partials/mixins" as *;
+
+
+
+// form {
+//     margin-top: -2.2rem;
+// }
+// .inventory-form {
+//     display: flex;
+//     flex-direction: column;
+//     margin: 11px;
+//     background: $White;
+//     justify-content: center;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//     position: relative;
+//     top:-2.5vh;
+//     border-radius: 3px;
+//     padding: 0 1rem;
+
+//     &__header {
+//       display: flex;
+//       flex-direction: row;
+//       padding: 16px;
+//       width: 100%;
+//       &-link {
+//         display: flex;
+//         flex-direction: row;
+//         margin-right: 8px;
+//         img {
+//           width: 24px;
+//         }
+//       }
+//     }
+  
+//     hr {
+//       border: none;
+//       border: 1px solid $Cloud;
+//       margin: 8px 0;
+      
+//     }
+  
+//     h1 {
+//       margin: 5px 0;
+//       line-height: 36px;
+//       font-weight: 600;
+//       font-size: 22px;
+//     }
+//     h2 {
+//       margin-top: 1rem;
+//       font-size: 20px;
+//       line-height: 28px;
+//       margin-bottom: 10px;
+//     }
+//     // h3 {
+//     //   margin-top: 1rem;
+//     //   font-size: 13px;
+//     //   line-height: 10px;
+      
+//     // }
+  
+//     .section {
+//       margin-top: 16px;
+//       margin-bottom: 20px;
+//       padding: 1rem 1rem;
+//       label {
+//         display: block;
+//         margin-top: 16px;
+//         font-size: 15px;
+//         // margin-left: 8px;
+//       }
+  
+//       textarea,
+//       select,
+//       input {
+//         width: 100%;
+//         padding: 10px;
+//         margin-top: 8px;
+//         margin-bottom: 8px;
+//         border: 1px solid #ccc;
+//         border-radius: 20px;
+//         font-size: 14px;
+//         color: $Slate;
+
+      
+//         &.error {
+//           border-color: $Red;
+//         }
+//         &:focus {
+//           border-color: $Instock-Indigo;
+//         }
+//         .description-text {
+//             padding: 4rem;
+//           }
+//       }
+//       .error-message {
+//         color: $Red;
+//         font-size: 13px;
+//         margin-top: -8px;
+        
+//       }
+//     }
+//     .status-options {
+//       display: flex;
+//       gap: 24px;
+//       label {
+//         display: flex;
+//         flex-direction: row;
+//         align-items: center;
+//         gap: 12px;
+//         font-size: 14px;
+//         cursor: pointer;
+//         color: $Instock-Black;
+//         }
+//         input[type="radio"] {
+//           width: 16px;
+//           height: 16px;
+//           cursor: pointer;
+//           margin: 0; 
+//           vertical-align: middle;
+//           // appearance: none;
+//           &:not(:checked) + span {
+//             color: $Slate; 
+//           }
+//         }
+//     }
+//     .buttons {
+//       display: flex;
+//       flex-direction: row;
+//       gap: 12px;
+//       width: 100%;
+//       background-color: $Light-Grey;
+//       padding: 16px;
+//       .cancel,
+//       .add-item {
+//         width: 50%;
+//         padding: 8px 40px;
+//         border-radius: 20px;
+//         cursor: pointer;
+//         font-size: 13px;
+//       }
+//       .cancel {
+//         background: $White;
+//         border: 1px solid $Cloud;
+//         color: $Slate;
+  
+//         &:hover {
+//           border-color: $Instock-Indigo;
+//           color: $Instock-Indigo;
+//         }
+//       }
+    
+//       .add-item {
+//         background: $Instock-Indigo;
+//         color: $White;
+//         border: none;
+//         font-weight: bold;
+    
+//         &:hover {
+//           background-color: $Instock-Black;
+//         }
+//       }
+    
+//       @include tablet {
+//         flex-direction: row;
+//         justify-content: flex-end;
+//         gap: 16px;
+//         width: auto;
+    
+//         .cancel,
+//         .add-item {
+//           width: auto;
+//         }
+//       }
+//     }
+    
+//     @include tablet {
+//       .form-section {
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-between;
+//       }
+//       .inventory-form {
+//       margin: 0 28px;
+//           .buttons {
+//             justify-content: end;
+//             background-color: $Light-Grey;
+//             padding: 16px;
+//             .cancel {
+//               margin-right: 16px;
+//             }
+//             .save {
+//               background-color: $Instock-Indigo;
+//             }
+//           }
+//       }
+  
+//       .section {
+//         width: 100%;
+//         margin: 0 24px;
+//         // textarea,
+//         // select,
+//         input {
+//           width: 100%;
+//         }
+//       }
+//     }
+  
+//     @include desktop {
+//       .inventory-form {
+//         margin:0 6rem;
+//       }
+//     }
+//   }
+  
+
+//   .section-about, .section-details {
+//     padding: 0 1rem;
+//   }
+
+  
+
+
+.inventory-form {
+    display: flex;
+    flex-direction: column;
+    margin: 11px;
+    background: $White;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: -2.5vh;
+    border-radius: 3px;
+    padding: 0 1rem;
+
+    form {
+        margin-top: -2.2rem;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        padding: 16px;
+        width: 100%;
+        
+        &-link {
+            display: flex;
+            flex-direction: row;
+            margin-right: 8px;
+            
+            img {
+                width: 24px;
+            }
+        }
+    }
+
+}
+    .section {
+        margin-top: 16px;
+        margin-bottom: 20px;
+        padding: 1rem 1rem;
+
+        label {
+            display: block;
+            margin-top: 16px;
+            font-size: 15px;
+        }
+
+        textarea,
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 14px;
+            color: $Slate;
+
+            &.error {
+                border-color: $Red;
+            }
+            &:focus {
+                border-color: $Instock-Indigo;
+            }
+        }
+    }
+
+    .status-options {
+        display: flex;
+        gap: 24px;
+        
+        label {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            cursor: pointer;
+            color: $Instock-Black;
+        }
+        
+        input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            margin: 0;
+            vertical-align: middle;
+        }
+
+        input[type="radio"]:not(:checked) + span {
+            color: $Slate;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        width: 100%;
+        background-color: $Light-Grey;
+        padding: 16px;
+
+        .cancel {
+            background: $White;
+            border: 1px solid $Cloud;
+            color: $Slate;
+
+            &:hover {
+                border-color: $Instock-Indigo;
+                color: $Instock-Indigo;
+            }
+        }
+
+        .add-item {
+            background: $Instock-Indigo;
+            color: $White;
+            border: none;
+            font-weight: bold;
+
+            &:hover {
+                background-color: $Instock-Black;
+            }
+        }
+    }
+
+
+.section-about,
+.section-details {
+    padding: 0 1rem;
+}
+
+
+.description-text{
+    padding: 4rem;
+}
+hr {
+    border: none;
+    border: 0.0625rem solid $Cloud;
+    margin: 0.5rem 0;
+}
+
+h1 {
+    margin: 0.3125rem 0;
+    line-height: 2.25rem;
+    font-weight: 600;
+    font-size: 1.375rem;
+}
+
+h2 {
+    margin-top: -16px;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-bottom: 0.625rem;
+}

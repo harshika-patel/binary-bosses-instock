@@ -1,3 +1,4 @@
+import InventoryEditItem from "../../components/InventoryEditItem/InventoryEditItem";
 import "./InventoryEditItemPage.scss";
 // import axios from "axios";
 // import { useEffect, useState } from "react";
@@ -6,7 +7,7 @@ import "./InventoryEditItemPage.scss";
 const InventoryEditItemPage = () => {
     return (
         <div>
-            <p>Edit inventory for each item page</p>
+            <InventoryEditItem/>
         </div>
     );
 };
