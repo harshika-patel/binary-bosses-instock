@@ -6,160 +6,244 @@
 .inventory-form {
   display: flex;
   flex-direction: column;
-  margin: 0.6875rem;
+  margin: 1rem;
   background: $White;
   justify-content: center;
-  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
   top: -2.5vh;
-  border-radius: 0.1875rem;
-  padding: 0 1rem;
-  margin-top: -4rem;
-
-  
-
-  form {
-    margin-top: -2.2rem;
-  }
-
+  border-radius: 3px;
   &__header {
     display: flex;
     flex-direction: row;
-    padding: 1rem;
-    width: 100%;
-
+    padding: 1.5rem 1rem;
+    width: 100vw;
     &-link {
       display: flex;
       flex-direction: row;
       margin-right: 0.5rem;
-
       img {
-        width: 1.5rem;
+        width: 24px;
+      }
+    }
+    h1 {
+      margin: 0.3125rem 0;
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+      font-weight: 600;
+      @include tablet {
+        font-size: 2rem;
+        line-height: 2.5rem;
       }
     }
   }
-}
-.section {
-  margin-top: 1rem;
-  margin-bottom: 1.25rem;
-  padding: 1rem 1rem;
-
-  label {
-    display: block;
-    margin-top: 1rem;
-    font-size: 0.9375rem;
+  hr {
+    border: none;
+    border: 1px solid $Cloud;
+    margin: 0;
   }
-
-  textarea,
-  select,
-  input {
-    width: 100%;
-    padding: 0.625rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 0.0625rem solid #ccc;
-    border-radius: 1.25rem;
-    font-size: 0.875rem;
-    color: $Slate;
-
-    &.error {
-      border-color: $Red;
-      outline: none;
+  .section {
+    margin-bottom: 1rem !important;
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    @include tablet {
+      max-width: 50%;
     }
-    &:focus {
-      border-color: $Instock-Indigo;
-      outline: none;
+    h2 {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      margin-bottom: 0.625rem;
+      @include tablet {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      margin-bottom: 0.5rem;
+      @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+      }
+    }
+    textarea {
+      resize: none;
+      min-height: 120px;
+    }
+    textarea,
+    select,
+    input {
+      width: 100%;
+      padding: 0.625rem 1rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
+      height: 36px;
+      border: 1px solid #ccc;
+      border-radius: 1.25rem;
+      font-size: 0.8125rem;
+      line-height: 1.25rem;
+      color: $Slate !important;
+      &::placeholder {
+        color: $Slate !important;
+        opacity: 1;
+      }
+      @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        height: 38px;
+        max-width: 40vw;
+      }
+      &.error {
+        border-color: $Red;
+      }
+      &:focus {
+        border-color: $Instock-Indigo;
+        outline: none;
+      }
+    }
+    select {
+      appearance: none;
+      background-image: url("../../assets/Icons/arrow_drop_down-24px.svg");
+      background-repeat: no-repeat;
+      background-position: right 0.625rem center;
+      padding-right: 2rem;
+      @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        height: 38px;
+      }
+    }
+    .error-message {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $Red;
+      font-size: 0.8125rem;
+      line-height: 1.125rem;
+      margin-top: 0.5rem;
+      &::before {
+        content: url("../../assets/Icons/error-24px.svg");
+        display: inline-block;
+        width: 12px;
+        flex-shrink: 0;
+        margin-right: 0.25rem;
+        margin-top: 0rem;
+        transform: scale(0.75);
+      }
+    }
+    .status-options {
+      display: flex;
+      gap: 1.5rem;
+      height: 20px;
+      label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.875rem;
+        cursor: pointer;
+        color: $Instock-Black;
+      }
+      input[type="radio"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        margin: 0;
+        vertical-align: middle;
+        // appearance: none;
+        &:not(:checked) + text {
+          color: $Slate;
+        }
+      }
     }
   }
-}
-
-.status-options {
-  display: flex;
-  gap: 1.5rem;
-
-  label {
+  .buttons {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.875rem;
-    cursor: pointer;
-    color: $Instock-Black;
-  }
+    gap: 12px;
+    width: 100%;
+    background-color: $Light-Grey;
+    padding: 16px;
+    .cancel,
+    .add-item {
+      width: 50vw;
+      padding: 0.5rem 2.5rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.8125rem;
+    }
+    .cancel {
+      background: $White;
+      border: 1px solid $Cloud;
+      color: $Slate;
 
-  input[type="radio"] {
-    width: 1rem;
-    height: 1rem;
-    cursor: pointer;
-    margin: 0;
-    vertical-align: middle;
-  }
+      &:hover {
+        border-color: $Instock-Indigo;
+        color: $Instock-Indigo;
+      }
+    }
 
-  input[type="radio"]:not(:checked) + span {
-    color: $Slate;
-  }
-}
+    .add-item {
+      background: $Instock-Indigo;
+      color: $White;
+      border: none;
+      font-weight: bold;
 
-.buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 0.75rem;
-  width: 100%;
-  background-color: $Light-Grey;
-  padding: 1rem 1.7rem 1rem 1.7rem;
-  position: relative;
-  z-index: 10;
-@include tablet {
-  width: 103%;
-}
+      &:hover {
+        background-color: $Graphite;
+      }
+    }
 
-  .cancel {
-    background: $White;
-    border: 0.0625rem solid $Cloud;
-    color: $Slate;
+    @include tablet {
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 16px;
+      width: auto;
 
-    &:hover {
-      border-color: $Instock-Indigo;
-      color: $Instock-Indigo;
+      .cancel,
+      .add-item {
+        width: auto;
+      }
     }
   }
 
-  .add-item {
-    background: $Instock-Indigo;
-    color: $White;
-    border: none;
-    font-weight: bold;
+  @include tablet {
+    .form-section {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .inventory-form {
+      margin: 0 1.75rem;
+      .buttons {
+        justify-content: end;
+        background-color: $Light-Grey;
+        padding: 1rem;
+        .cancel {
+          margin-right: 1rem;
+        }
+      }
+    }
 
-    &:hover {
-      background-color: $Instock-Black;
+    .section {
+      width: 100vw;
+      margin: 0 1.5rem;
+      // textarea,
+      // select,
+      input {
+        width: 100vw;
+      }
     }
   }
-}
 
-.section-about,
-.section-details {
-  padding: 0 1rem;
-}
-
-.description-text {
-  padding: 4rem;
-}
-hr {
-  border: none;
-  border: 0.0625rem solid $Cloud;
-  margin: 0.5rem 0;
-}
-
-h1 {
-  margin: 0.3125rem 0;
-  line-height: 2.25rem;
-  font-weight: 600;
-  font-size: 1.375rem;
-}
-
-h2 {
-  margin-top: -1rem;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  margin-bottom: 0.625rem;
+  @include desktop {
+    .inventory-form {
+      margin: 0 6rem;
+    }
+  }
 }
