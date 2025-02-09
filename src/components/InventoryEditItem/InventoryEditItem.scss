@@ -14,6 +14,9 @@
   top: -2.5vh;
   border-radius: 0.1875rem;
   padding: 0 1rem;
+  margin-top: -4rem;
+
+  
 
   form {
     margin-top: -2.2rem;
@@ -61,9 +64,11 @@
 
     &.error {
       border-color: $Red;
+      outline: none;
     }
     &:focus {
       border-color: $Instock-Indigo;
+      outline: none;
     }
   }
 }
@@ -101,7 +106,10 @@
   gap: 0.75rem;
   width: 100%;
   background-color: $Light-Grey;
-  padding: 1rem;
+  padding: 1rem 1.7rem 1rem 1.7rem;
+  position: relative;
+  z-index: 10;
+
 
   .cancel {
     background: $White;

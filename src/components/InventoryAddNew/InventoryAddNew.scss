@@ -38,7 +38,8 @@
     margin: 0.3125rem 0;
     line-height: 2.25rem;
     font-weight: 600;
-    font-size: 1.5625rem;
+    font-size: 1.37rem;
+    width: 100%;
   }
   h2 {
     margin-top: 16px;
@@ -73,6 +74,9 @@
       &:focus {
         border-color: $Instock-Indigo;
       }
+      .description {
+        padding-bottom: 4rem;
+      }
     }
     .error-message {
       color: $Red;
@@ -106,14 +110,18 @@
   .buttons {
     display: flex;
     flex-direction: row;
-    gap: 0.75rem;
-    width: 100%;
     background-color: $Light-Grey;
-    padding: 1rem;
+    padding: 1.1rem 0.82rem 1.1rem 0.82rem;
+    width: 112%;
+    position: relative;
+    z-index: 10;
+    margin-left: -1rem;
+    gap: 0.6rem;
+
     .cancel,
     .add-item {
       width: 50%;
-      padding: 0.5rem 2.5rem;
+      padding: 0.42rem 2rem;
       border-radius: 1.25rem;
       cursor: pointer;
       font-size: 0.8125rem;
@@ -122,7 +130,9 @@
       background: $White;
       border: 0.0625rem solid $Cloud;
       color: $Slate;
-
+      &:focus {
+      outline: none;
+      }
       &:hover {
         border-color: $Instock-Indigo;
         color: $Instock-Indigo;
@@ -190,3 +200,5 @@
     }
   }
 }
+
+

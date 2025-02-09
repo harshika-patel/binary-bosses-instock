@@ -101,9 +101,16 @@
     display: flex;
     justify-content: space-between;
     background-color: $Light-Grey;
-    padding: 1rem 0.5rem 1.3rem 0.5rem;
-    margin-bottom: -1rem;
-    width: 100%;
+    padding: 1rem 0.82rem 0.9rem 0.82rem;
+    margin-bottom: -0.7rem;
+    width: 107.5%;
+    position: relative;
+    z-index: 10;
+    margin-left: -0.67rem;
+    gap: 0.2rem;
+    // s
+
+
 
     .cancel {
       background: $White;
@@ -118,6 +125,13 @@
       }
       .save {
         background-color: $Instock-Indigo;
+        &:hover {
+          border: solid 1px $Instock-Indigo;
+          color: $White;
+        }
+        &:focus {
+          color: $White;
+        }
       }
     }
 
@@ -125,7 +139,7 @@
       background: $Instock-Indigo;
       color: $White;
       border: none;
-      padding: 0.625rem 0.9375rem;
+     padding: 0.5rem 2.5rem;
       border-radius: 1.25rem;
       cursor: pointer;
       font-size: 0.8125rem;
