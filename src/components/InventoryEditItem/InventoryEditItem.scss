@@ -109,7 +109,9 @@
   padding: 1rem 1.7rem 1rem 1.7rem;
   position: relative;
   z-index: 10;
-
+@include tablet {
+  width: 103%;
+}
 
   .cancel {
     background: $White;
