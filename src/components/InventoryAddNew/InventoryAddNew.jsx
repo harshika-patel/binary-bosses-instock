@@ -143,7 +143,7 @@ const InventoryAddNew = () => {
 
             <label>Description</label>
             <textarea
-            className="description"
+              className="description"
               name="description"
               value={formData.description}
               onChange={handleChange}
