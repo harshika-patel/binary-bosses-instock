@@ -8,7 +8,7 @@ const InventoryDeleteModal = ({ isOpen, onClose, onConfirm, itemName }) => {
     return (
         <div className="modal-overlay">
             <div className="modal">
-                {/* Close button */}
+
                 <img
                     className="modal__close-icon"
                     src={closeIcon}
@@ -16,17 +16,15 @@ const InventoryDeleteModal = ({ isOpen, onClose, onConfirm, itemName }) => {
                     onClick={onClose}
                 />
                 
-                {/* Modal Content */}
                 <div className="modal__content">
-                    <h2 className="modal__title">Delete {itemName}?</h2>
+                    <h2 className="modal__title">Delete {itemName} inventory item?</h2>
                     <p className="modal__text">
                         Please confirm that you'd like to delete {itemName} from the inventory.
                         You won't be able to undo this action.
                     </p>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="modal__actions">
+                <div className="modal__inventory-actions">
                     <button className="modal__button modal__button--secondary" onClick={onClose}>
                         Cancel
                     </button>
