@@ -22,17 +22,17 @@
 .modal {
   position: relative;
   width: 100vw;
-  max-width: 672px; 
+  max-width: 25rem;
   height: 100vh;
   background-color: white;
   padding: 1rem;
   flex-direction: column; 
   @include tablet {
       max-width: 42rem;
-      max-height: 16.375rem; 
-      margin-top: 0;
-      box-shadow: 0px 0.25rem 0.625rem rgba(0, 0, 0, 0.25); 
-      border-radius: 0.1875rem; 
+      max-height: 16.375rem; // Ask Matt 
+      margin-top: 11.5625rem;
+      box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.25);
+      border-radius: 0.1875rem;
       padding: 1.5rem;
       display: flex;
       justify-content: space-between;
@@ -43,37 +43,33 @@
     margin-top: 3.75rem; 
     text-align: left; 
     @include tablet {
-      margin-top: 1rem; 
+      margin-top: 1.5rem;
       padding-left: 1rem;
-      padding-right: 1rem; 
+      padding-right: 1rem;  
       margin-left: auto; 
       margin-right: auto;
     }
   }
   &__title {
-    font-family: "TitilliumWeb", sans-serif;
-    font-size: 1.75rem; 
+    font-family: "Titillium Web", sans-serif;
+    font-size: 1.75rem;
     color: $Instock-Black;
     font-weight: 600;
     line-height: 2.25rem;
-    margin-bottom: 1.5rem; 
+    margin-bottom: 1.5rem;
     @include tablet {
       margin-bottom: 1rem;
-      font-size: 2rem; 
-      line-height: 2.5rem;
     }
   }
   &__text {
-    font-family: "TitilliumWeb", sans-serif;
+    font-family: "Titillium Web", sans-serif;
     font-size: 0.9375rem;
     color: $Instock-Black;
     font-weight: 400;
-    margin-bottom: 1rem; 
-    line-height: 1.625rem; 
+    margin-bottom: 1rem;
+    line-height: 1.625rem;
     @include tablet {
       margin-bottom: 1rem;
-      line-height: 1.75rem; 
-      font-size: 1rem;
     }
   }
   &__warehouse-actions {
@@ -82,15 +78,11 @@
     left: 0;
     width: 99%; 
     display: flex;
-    justify-content: center;
-    gap: 0.625rem; 
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-top: auto;
-    margin-bottom: 1rem;
-    
+    justify-content: space-between;
+    gap: 0.625rem;
+    padding: 1rem;
     @include tablet {
-      right: 1rem; 
+      right: 1rem;
       bottom: 1rem;
       width: auto;
       justify-content: flex-end;
@@ -100,28 +92,26 @@
   &__button {
     font-family: "TitilliumWeb", sans-serif;
     flex: 1;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     border: none;
-    border-radius: 1.25rem;
-    font-size: .8125rem;
+    border-radius: 20px;
+    font-size: 13px;
     line-height: 1.25rem;
     font-weight: 400;
-    height: 36px;
-    width: 100%; 
-    margin: 0;
-    padding: 0.5rem;
+    height: 2.25rem;
+    width: auto; 
     min-width: unset; 
     white-space: nowrap;
     cursor: pointer;
       @include tablet {
         font-size: 1rem;
-        height: 38px;
+        height: 2.375rem;
         padding: 0.5rem 1rem;
         flex: 0;
       }
       &--secondary {
         background-color: white;
-        border: 0.5px solid $Cloud;
+        border: 0.0313rem solid $Cloud;
         font-family: "Manhattan", sans-serif; 
         color: $Slate;
         &:hover {

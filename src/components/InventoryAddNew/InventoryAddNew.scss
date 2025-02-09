@@ -6,24 +6,24 @@
 .inventory-form {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: 0.6875rem;
   background: $White;
   justify-content: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
   position: relative;
-  top:-2.5vh;
-  border-radius: 3px;
+  top: -2.5vh;
+  border-radius: 0.1875rem;
   &__header {
     display: flex;
     flex-direction: row;
-    padding: 1.5rem 1rem;
-    width: 100vw;
+    padding: 1rem;
+    width: 100%;
     &-link {
       display: flex;
       flex-direction: row;
-      margin-right: .5rem;
+      margin-right: 0.5rem;
       img {
-        width: 24px;
+        width: 1.5rem;
       }
     }
     h1 {
@@ -39,66 +39,43 @@
   }
   hr {
     border: none;
-    border: 1px solid $Cloud;
-    margin: 0;
-    
+    border: 0.0625rem solid $Cloud;
+    margin: 0.5rem 0;
   }
+
+  h1 {
+    margin: 0.3125rem 0;
+    line-height: 2.25rem;
+    font-weight: 600;
+    font-size: 1.37rem;
+    width: 100%;
+  }
+  h2 {
+    margin-top: 16px;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-bottom: 0.625rem;
+  }
+
   .section {
-    margin-bottom: 1rem !important;
-    padding: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    @include tablet {
-      max-width: 50%;
-    }
-    h2 {
-      margin-top: 1rem;
-      font-size: 1.25rem;
-      line-height: 1.75rem;
-      margin-bottom: .625rem;
-      @include tablet {
-        font-size: 1.5rem;
-        line-height: 2rem;
-      }
-    }
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
     label {
       display: block;
       margin-top: 1rem;
-      font-size: .8125rem;
-      line-height: 1.25rem;
-      margin-bottom: .5rem;
-      @include tablet {
-        font-size: .875rem;
-        line-height: 1.375rem;
-      }
-    }
-    textarea {
-      resize: none; 
-      min-height: 120px;
+      font-size: 0.9375rem;
     }
     textarea,
     select,
     input {
       width: 100%;
-      padding: .625rem 1rem;  
-      margin-top: .25rem;
-      margin-bottom: .5rem;
-      height: 36px;  
-      border: 1px solid #ccc;
+      padding: 0.625rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      border: 0.0625rem solid #ccc;
       border-radius: 1.25rem;
-      font-size: .8125rem;
-      line-height: 1.25rem;
-      color: $Slate !important; 
-      &::placeholder {
-        color: $Slate !important; 
-        opacity: 1; 
-      }
-      @include tablet {
-        font-size: .875rem;
-        line-height: 1.375rem;
-        height: 38px; 
-        max-width: 40vw;
-      }
+      font-size: 0.875rem;
       &.error {
         border-color: $Red;
       }
@@ -118,101 +95,101 @@
         line-height: 1.375rem;
         height: 38px; 
       }
+      .description {
+        padding-bottom: 4rem;
+      }
+      .description {
+        padding-bottom: 4rem;
+      }
     }
     .error-message {
       display: flex;
       align-items: center; 
       gap: 8px; 
       color: $Red;
-      font-size: .8125rem;
-      line-height: 1.125rem;
-      margin-top: .5rem;
-      &::before {
-        content: url('../../assets/Icons/error-24px.svg'); 
-        display: inline-block;
-        width: 12px;
-        flex-shrink: 0;
-        margin-right: .25rem; 
-        margin-top: 0rem;
-        transform: scale(0.75); 
-      }
+      font-size: 0.8125rem;
+      margin-top: -0.5rem;
     }
-    .status-options {
+  }
+  .status-options {
+    display: flex;
+    gap: 1.5rem;
+    label {
       display: flex;
-      gap: 1.5rem;
-      height: 20px;
-      label {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
-        font-size: .875rem;
-        cursor: pointer;
-        color: $Instock-Black;
-        }
-        input[type="radio"] {
-          width: 16px;
-          height: 16px;
-          cursor: pointer;
-          margin: 0; 
-          vertical-align: middle;
-          // appearance: none;
-          &:not(:checked) + text {
-            color: $Slate; 
-          }
-        }
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      color: $Instock-Black;
+    }
+    input[type="radio"] {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+      margin: 0;
+      vertical-align: middle;
+      &:not(:checked) + span {
+        color: $Slate;
+      }
     }
   }
   .buttons {
     display: flex;
     flex-direction: row;
-    gap: 12px;
-    width: 100%;
     background-color: $Light-Grey;
-    padding: 16px;
+    padding: 1.1rem 0.82rem 1.1rem 0.82rem;
+    width: 112%;
+    position: relative;
+    z-index: 10;
+    margin-left: -1rem;
+    gap: 0.6rem;
+
     .cancel,
     .add-item {
-      width: 50vw;
-      padding: .5rem 2.5rem;
-      border-radius: 20px;
+      width: 50%;
+      padding: 0.42rem 2rem;
+      border-radius: 1.25rem;
       cursor: pointer;
-      font-size: .8125rem;
+      font-size: 0.8125rem;
     }
     .cancel {
       background: $White;
-      border: 1px solid $Cloud;
+      border: 0.0625rem solid $Cloud;
       color: $Slate;
-
+      &:focus {
+      outline: none;
+      }
       &:hover {
         border-color: $Instock-Indigo;
         color: $Instock-Indigo;
       }
     }
-  
+
     .add-item {
       background: $Instock-Indigo;
       color: $White;
       border: none;
       font-weight: bold;
-  
+
       &:hover {
         background-color: $Graphite;
       }
     }
-  
+
     @include tablet {
       flex-direction: row;
       justify-content: flex-end;
-      gap: 16px;
+      gap: 1rem;
       width: auto;
-  
+
       .cancel,
       .add-item {
         width: auto;
       }
     }
   }
-  
+
   @include tablet {
     .form-section {
       display: flex;
@@ -220,22 +197,24 @@
       justify-content: space-between;
     }
     .inventory-form {
-    margin: 0 1.75rem;
-        .buttons {
-          justify-content: end;
-          background-color: $Light-Grey;
-          padding: 1rem;
-          .cancel {
-            margin-right: 1rem;
-          }
+      margin: 0 1.75rem;
+      .buttons {
+        justify-content: end;
+        background-color: $Light-Grey;
+        padding: 1rem;
+        .cancel {
+          margin-right: 1rem;
         }
+        .save {
+          background-color: $Instock-Indigo;
+        }
+      }
     }
 
     .section {
-      width: 100vw;
+      width: 100%;
       margin: 0 1.5rem;
-      // textarea,
-      // select,
+
       input {
         width: 100vw;
       }
@@ -244,7 +223,9 @@
 
   @include desktop {
     .inventory-form {
-      margin:0 6rem;
+      margin: 0 6rem;
     }
   }
 }
+
+

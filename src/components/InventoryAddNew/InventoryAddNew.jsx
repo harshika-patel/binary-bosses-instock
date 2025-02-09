@@ -143,6 +143,7 @@ const InventoryAddNew = () => {
 
           <label><h3>Description</h3></label>
             <textarea
+              className="description"
               name="description"
               value={formData.description}
               onChange={handleChange}
@@ -158,11 +159,11 @@ const InventoryAddNew = () => {
               value={formData.category}
               onChange={handleChange}
             >
-              <option value="">Please select</option>
+              <option value="">Please select a category</option>
               <option value="Electronics">Electronics</option>
-              <option value="Furniture">Furniture</option>
-              <option value="Clothing">Clothing</option>
-              <option value="Food">Food</option>
+              <option value="Gear">Gear</option>
+              <option value="Apparel">Apparel</option>
+              <option value="Accessories">Accessories</option>
             </select>
             {errors.category && (
               <span className="error-message">{errors.category}</span>
